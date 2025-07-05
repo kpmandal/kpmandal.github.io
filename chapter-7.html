@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 7: Motion</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap');
+
+        :root {
+            --bg-color: #e3f2fd; /* Light sky blue */
+            --card-bg: #ffffff;
+            --text-color: #37474f;
+            --header-color: #0d47a1; /* Deep blue */
+            --accent-color: #ffc107; /* Amber yellow */
+            --accent-light: #fffbe6; /* Light yellow for boxes */
+            --card-shadow: rgba(0, 0, 0, 0.1);
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'Nunito', sans-serif;
+            color: var(--text-color);
+            margin: 0;
+            padding: 30px;
+            line-height: 1.7;
+        }
+
+        .note-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            border-radius: 24px;
+            padding: 30px 40px;
+            box-shadow: 0 8px 0 0 #bdbdbd, 0 8px 15px 0 var(--card-shadow);
+        }
+        
+        .nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .back-link {
+            display: inline-block;
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 800;
+            box-shadow: 0 4px 0 0 #d1d1d1;
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
+        }
+
+        .back-link:hover {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 0 #d1d1d1;
+        }
+
+        .language-selector {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            padding: 10px 20px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            border: none;
+            border-radius: 16px;
+            background-color: #e9e9e9;
+            color: #555;
+            cursor: pointer;
+            box-shadow: 0 4px 0 0 #c9c9c9;
+            transition: all 0.1s ease;
+        }
+
+        .lang-btn:hover { background-color: #dfdfdf; }
+
+        .lang-btn.active {
+            background-color: var(--accent-color);
+            color: #333;
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 0 #c79100;
+        }
+        
+        .chapter-header { text-align: center; border-bottom: 2px solid var(--border-color); padding-bottom: 30px; margin-bottom: 40px; }
+        .chapter-header h1 { font-size: 2.8rem; font-weight: 800; color: var(--header-color); margin: 0; }
+        .chapter-tag { display: inline-block; background-color: var(--accent-color); color: #333; font-weight: 800; padding: 6px 16px; border-radius: 16px; margin-top: 15px; font-size: 1rem; }
+        
+        main h2 { font-size: 2rem; font-weight: 800; color: var(--header-color); margin-top: 40px; margin-bottom: 20px; }
+        main h3 { font-size: 1.5rem; font-weight: 700; color: #1976d2; margin-top: 30px; margin-bottom: 15px; }
+        p, li { font-size: 1.1rem; color: var(--text-color); }
+        strong { font-weight: 700; color: #263238; }
+
+        .key-concept-box { background-color: var(--accent-light); border-left: 6px solid var(--accent-color); border-radius: 8px; padding: 20px; margin: 30px 0; }
+        .key-concept-box p { margin: 0; font-size: 1.1rem; font-weight: 700; }
+
+        .styled-list { list-style: none; padding-left: 0; }
+        .styled-list li { padding-left: 35px; position: relative; margin-bottom: 10px; }
+        .styled-list li::before { content: '🚗'; position: absolute; left: 0; top: 4px; font-size: 1.2rem; }
+
+        .lang-content { display: none; }
+
+        @media (max-width: 768px) {
+            body { padding: 15px; }
+            .note-container { padding: 25px; }
+            .chapter-header h1 { font-size: 2.2rem; }
+            .nav-header { flex-direction: column-reverse; align-items: stretch; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="note-container">
+        <header class="nav-header">
+            <a href="index.html" class="back-link">
+                <span class="lang-content en">← Back to Index</span>
+                <span class="lang-content hi">← सूची पर वापस जाएं</span>
+                <span class="lang-content bn">← সূচিপত্রে ফিরে যান</span>
+            </a>
+            <div class="language-selector">
+                <button id="btn-en" class="lang-btn">English</button>
+                <button id="btn-hi" class="lang-btn">हिन्दी</button>
+                <button id="btn-bn" class="lang-btn">বাংলা</button>
+            </div>
+        </header>
+
+        <header class="chapter-header">
+            <h1>
+                <span class="lang-content en">Motion 🚗</span>
+                <span class="lang-content hi">गति 🚗</span>
+                <span class="lang-content bn">গতি 🚗</span>
+            </h1>
+            <div class="chapter-tag">
+                <span class="lang-content en">Chapter 7</span>
+                <span class="lang-content hi">अध्याय 7</span>
+                <span class="lang-content bn">অধ্যায় ৭</span>
+            </div>
+        </header>
+
+        <main>
+            <h2>
+                <span class="lang-content en">Describing Motion</span>
+                <span class="lang-content hi">गति का वर्णन</span>
+                <span class="lang-content bn">গতির বর্ণনা</span>
+            </h2>
+            <p>
+                <span class="lang-content en">Motion is the change in position of an object with time. To describe motion, we need a reference point (origin).</span>
+                <span class="lang-content hi">समय के साथ किसी वस्तु की स्थिति में परिवर्तन को गति कहते हैं। गति का वर्णन करने के लिए हमें एक संदर्भ बिंदु (मूल) की आवश्यकता होती है।</span>
+                <span class="lang-content bn">সময়ের সাথে কোনো বস্তুর অবস্থানের পরিবর্তনকে গতি বলে। গতির বর্ণনা করার জন্য আমাদের একটি প্রসঙ্গ বিন্দু (মূল) প্রয়োজন।</span>
+            </p>
+            <ul class="styled-list">
+                <li>
+                    <span class="lang-content en"><strong>Distance:</strong> The total path length covered by an object. It is a scalar quantity.</span>
+                    <span class="lang-content hi"><strong>दूरी:</strong> किसी वस्तु द्वारा तय की गई कुल पथ लंबाई। यह एक अदिश राशि है।</span>
+                    <span class="lang-content bn"><strong>দূরত্ব:</strong> কোনো বস্তু দ্বারা অতিক্রান্ত মোট পথের দৈর্ঘ্য। এটি একটি স্কেলার রাশি।</span>
+                </li>
+                <li>
+                    <span class="lang-content en"><strong>Displacement:</strong> The shortest distance between the initial and final position of an object. It is a vector quantity.</span>
+                    <span class="lang-content hi"><strong>विस्थापन:</strong> किसी वस्तु की प्रारंभिक और अंतिम स्थिति के बीच की सबसे छोटी दूरी। यह एक सदिश राशि है।</span>
+                    <span class="lang-content bn"><strong>সরণ:</strong> কোনো বস্তুর প্রাথমিক এবং চূড়ান্ত অবস্থানের মধ্যে সংক্ষিপ্ততম দূরত্ব। এটি একটি ভেক্টর রাশি।</span>
+                </li>
+            </ul>
+
+            <div class="key-concept-box">
+                <p>
+                    <span class="lang-content en">An object is in uniform motion if it travels equal distances in equal intervals of time. It is in non-uniform motion otherwise.</span>
+                    <span class="lang-content hi">कोई वस्तु एकसमान गति में होती है यदि वह समान समय अंतराल में समान दूरी तय करती है। अन्यथा यह असमान गति में होती है।</span>
+                    <span class="lang-content bn">একটি বস্তু সুষম গতিতে থাকে যদি এটি সমান সময়ের ব্যবধানে সমান দূরত্ব অতিক্রম করে। অন্যথায় এটি অসম গতিতে থাকে।</span>
+                </p>
+            </div>
+
+            <h2>
+                <span class="lang-content en">Rate of Motion and Velocity</span>
+                <span class="lang-content hi">गति की दर और वेग</span>
+                <span class="lang-content bn">গতির হার এবং বেগ</span>
+            </h2>
+            <ul class="styled-list">
+                <li>
+                    <span class="lang-content en"><strong>Speed:</strong> The distance travelled by an object per unit time. (Speed = Distance / Time).</span>
+                    <span class="lang-content hi"><strong>चाल:</strong> किसी वस्तु द्वारा प्रति इकाई समय में तय की गई दूरी। (चाल = दूरी / समय)।</span>
+                    <span class="lang-content bn"><strong>দ্রুতি:</strong> একক সময়ে কোনো বস্তু দ্বারা অতিক্রান্ত দূরত্ব। (দ্রুতি = দূরত্ব / সময়)।</span>
+                </li>
+                 <li>
+                    <span class="lang-content en"><strong>Velocity:</strong> The speed of an object moving in a definite direction. It is the displacement per unit time. (Velocity = Displacement / Time).</span>
+                    <span class="lang-content hi"><strong>वेग:</strong> एक निश्चित दिशा में गतिमान किसी वस्तु की चाल। यह प्रति इकाई समय में विस्थापन है। (वेग = विस्थापन / समय)।</span>
+                    <span class="lang-content bn"><strong>বেগ:</strong> একটি নির্দিষ্ট দিকে চলমান বস্তুর দ্রুতি। এটি একক সময়ে সরণ। (বেগ = সরণ / সময়)।</span>
+                </li>
+            </ul>
+
+            <h2>
+                <span class="lang-content en">Acceleration</span>
+                <span class="lang-content hi">त्वरण</span>
+                <span class="lang-content bn">ত্বরণ</span>
+            </h2>
+            <p>
+                <span class="lang-content en">Acceleration is the rate of change of velocity of an object with time. It is calculated as: a = (v - u) / t, where 'v' is the final velocity and 'u' is the initial velocity.</span>
+                <span class="lang-content hi">त्वरण समय के साथ किसी वस्तु के वेग में परिवर्तन की दर है। इसकी गणना इस प्रकार की जाती है: a = (v - u) / t, जहाँ 'v' अंतिम वेग है और 'u' प्रारंभिक वेग है।</span>
+                <span class="lang-content bn">ত্বরণ হলো সময়ের সাথে কোনো বস্তুর বেগের পরিবর্তনের হার। এটি গণনা করা হয়: a = (v - u) / t, যেখানে 'v' হলো অন্তিম বেগ এবং 'u' হলো প্রাথমিক বেগ।</span>
+            </p>
+
+            <h2>
+                <span class="lang-content en">Equations of Motion</span>
+                <span class="lang-content hi">गति के समीकरण</span>
+                <span class="lang-content bn">গতির সমীকরণ</span>
+            </h2>
+            <p>
+                <span class="lang-content en">For an object moving with uniform acceleration, we have three equations of motion:</span>
+                <span class="lang-content hi">एकसमान त्वरण से गतिमान किसी वस्तु के लिए, हमारे पास गति के तीन समीकरण हैं:</span>
+                <span class="lang-content bn">সুষম ত্বরণে চলমান বস্তুর জন্য, আমাদের তিনটি গতির সমীকরণ রয়েছে:</span>
+            </p>
+            <ul class="styled-list">
+                 <li>
+                    <span class="lang-content en"><strong>First Equation:</strong> v = u + at (Velocity-Time relation)</span>
+                    <span class="lang-content hi"><strong>पहला समीकरण:</strong> v = u + at (वेग-समय संबंध)</span>
+                    <span class="lang-content bn"><strong>প্রথম সমীকরণ:</strong> v = u + at (বেগ-সময় সম্পর্ক)</span>
+                </li>
+                <li>
+                    <span class="lang-content en"><strong>Second Equation:</strong> s = ut + ½at² (Position-Time relation)</span>
+                    <span class="lang-content hi"><strong>दूसरा समीकरण:</strong> s = ut + ½at² (स्थिति-समय संबंध)</span>
+                    <span class="lang-content bn"><strong>দ্বিতীয় সমীকরণ:</strong> s = ut + ½at² (অবস্থান-সময় সম্পর্ক)</span>
+                </li>
+                <li>
+                    <span class="lang-content en"><strong>Third Equation:</strong> 2as = v² - u² (Position-Velocity relation)</span>
+                    <span class="lang-content hi"><strong>तीसरा समीकरण:</strong> 2as = v² - u² (स्थिति-वेग संबंध)</span>
+                    <span class="lang-content bn"><strong>তৃতীয় সমীকরণ:</strong> 2as = v² - u² (অবস্থান-বেগ সম্পর্ক)</span>
+                </li>
+            </ul>
+
+        </main>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const langContents = document.querySelectorAll('.lang-content');
+
+        function switchLanguage(lang) {
+            localStorage.setItem('userLanguage', lang);
+
+            langButtons.forEach(button => {
+                button.classList.remove('active');
+                if (button.id === `btn-${lang}`) {
+                    button.classList.add('active');
+                }
+            });
+
+            langContents.forEach(content => {
+                content.style.display = 'none';
+            });
+
+            const activeContents = document.querySelectorAll(`.${lang}`);
+            activeContents.forEach(content => {
+                content.style.display = 'inline';
+            });
+        }
+
+        langButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const lang = button.id.split('-')[1];
+                switchLanguage(lang);
+            });
+        });
+
+        const savedLang = localStorage.getItem('userLanguage');
+        if (savedLang) {
+            switchLanguage(savedLang);
+        } else {
+            switchLanguage('en');
+        }
+    });
+</script>
+
+</body>
+</html>

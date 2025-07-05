@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 6: Tissues</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap');
+
+        :root {
+            --bg-color: #e3f2fd; /* Light sky blue */
+            --card-bg: #ffffff;
+            --text-color: #37474f;
+            --header-color: #0d47a1; /* Deep blue */
+            --accent-color: #ffc107; /* Amber yellow */
+            --accent-light: #fffbe6; /* Light yellow for boxes */
+            --card-shadow: rgba(0, 0, 0, 0.1);
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'Nunito', sans-serif;
+            color: var(--text-color);
+            margin: 0;
+            padding: 30px;
+            line-height: 1.7;
+        }
+
+        .note-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            border-radius: 24px;
+            padding: 30px 40px;
+            box-shadow: 0 8px 0 0 #bdbdbd, 0 8px 15px 0 var(--card-shadow);
+        }
+        
+        .nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .back-link {
+            display: inline-block;
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 800;
+            box-shadow: 0 4px 0 0 #d1d1d1;
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
+        }
+
+        .back-link:hover {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 0 #d1d1d1;
+        }
+
+        .language-selector {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            padding: 10px 20px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            border: none;
+            border-radius: 16px;
+            background-color: #e9e9e9;
+            color: #555;
+            cursor: pointer;
+            box-shadow: 0 4px 0 0 #c9c9c9;
+            transition: all 0.1s ease;
+        }
+
+        .lang-btn:hover { background-color: #dfdfdf; }
+
+        .lang-btn.active {
+            background-color: var(--accent-color);
+            color: #333;
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 0 #c79100;
+        }
+        
+        .chapter-header { text-align: center; border-bottom: 2px solid var(--border-color); padding-bottom: 30px; margin-bottom: 40px; }
+        .chapter-header h1 { font-size: 2.8rem; font-weight: 800; color: var(--header-color); margin: 0; }
+        .chapter-tag { display: inline-block; background-color: var(--accent-color); color: #333; font-weight: 800; padding: 6px 16px; border-radius: 16px; margin-top: 15px; font-size: 1rem; }
+        
+        main h2 { font-size: 2rem; font-weight: 800; color: var(--header-color); margin-top: 40px; margin-bottom: 20px; }
+        main h3 { font-size: 1.5rem; font-weight: 700; color: #1976d2; margin-top: 30px; margin-bottom: 15px; }
+        p, li { font-size: 1.1rem; color: var(--text-color); }
+        strong { font-weight: 700; color: #263238; }
+
+        .key-concept-box { background-color: var(--accent-light); border-left: 6px solid var(--accent-color); border-radius: 8px; padding: 20px; margin: 30px 0; }
+        .key-concept-box p { margin: 0; font-size: 1.1rem; font-weight: 700; }
+
+        .styled-list { list-style: none; padding-left: 0; }
+        .styled-list li { padding-left: 35px; position: relative; margin-bottom: 10px; }
+        .styled-list li::before { content: '🌿'; position: absolute; left: 0; top: 4px; font-size: 1.2rem; }
+
+        .lang-content { display: none; }
+
+        @media (max-width: 768px) {
+            body { padding: 15px; }
+            .note-container { padding: 25px; }
+            .chapter-header h1 { font-size: 2.2rem; }
+            .nav-header { flex-direction: column-reverse; align-items: stretch; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="note-container">
+        <header class="nav-header">
+            <a href="index.html" class="back-link">
+                <span class="lang-content en">← Back to Index</span>
+                <span class="lang-content hi">← सूची पर वापस जाएं</span>
+                <span class="lang-content bn">← সূচিপত্রে ফিরে যান</span>
+            </a>
+            <div class="language-selector">
+                <button id="btn-en" class="lang-btn">English</button>
+                <button id="btn-hi" class="lang-btn">हिन्दी</button>
+                <button id="btn-bn" class="lang-btn">বাংলা</button>
+            </div>
+        </header>
+
+        <header class="chapter-header">
+            <h1>
+                <span class="lang-content en">Tissues 🌿</span>
+                <span class="lang-content hi">ऊतक 🌿</span>
+                <span class="lang-content bn">কলা 🌿</span>
+            </h1>
+            <div class="chapter-tag">
+                <span class="lang-content en">Chapter 6</span>
+                <span class="lang-content hi">अध्याय 6</span>
+                <span class="lang-content bn">অধ্যায় ৬</span>
+            </div>
+        </header>
+
+        <main>
+            <h2>
+                <span class="lang-content en">What is a Tissue?</span>
+                <span class="lang-content hi">ऊतक क्या है?</span>
+                <span class="lang-content bn">কলা কী?</span>
+            </h2>
+            <p>
+                <span class="lang-content en">A tissue is a group of cells that are similar in structure and/or work together to achieve a particular function. In multicellular organisms, different groups of cells perform different functions.</span>
+                <span class="lang-content hi">ऊतक कोशिकाओं का एक समूह है जो संरचना में समान हैं और/या किसी विशेष कार्य को प्राप्त करने के लिए मिलकर काम करते हैं। बहुकोशिकीय जीवों में, कोशिकाओं के विभिन्न समूह विभिन्न कार्य करते हैं।</span>
+                <span class="lang-content bn">কলা হলো একগুচ্ছ কোষ যা গঠনে সদৃশ এবং/অথবা একটি নির্দিষ্ট কাজ সম্পাদনের জন্য একসাথে কাজ করে। বহুকোষী জীবে, কোষের বিভিন্ন গোষ্ঠী বিভিন্ন কার্য সম্পাদন করে।</span>
+            </p>
+
+            <div class="key-concept-box">
+                <p>
+                    <span class="lang-content en">The main difference between plant and animal tissues is that most plant tissues are supportive and provide structural strength, while animal tissues are adapted for mobility and more complex functions.</span>
+                    <span class="lang-content hi">पादप और जंतु ऊतकों के बीच मुख्य अंतर यह है कि अधिकांश पादप ऊतक सहायक होते हैं और संरचनात्मक मजबूती प्रदान करते हैं, जबकि जंतु ऊतक गतिशीलता और अधिक जटिल कार्यों के लिए अनुकूलित होते हैं।</span>
+                    <span class="lang-content bn">উদ্ভিদ ও প্রাণী কলার মধ্যে প্রধান পার্থক্য হলো, বেশিরভাগ উদ্ভিদ কলা সহায়ক এবং গঠনগত শক্তি প্রদান করে, যেখানে প্রাণী কলা গতিশীলতা এবং আরও জটিল কার্যাবলীর জন্য অভিযোজিত।</span>
+                </p>
+            </div>
+
+            <h2>
+                <span class="lang-content en">Plant Tissues</span>
+                <span class="lang-content hi">पादप ऊतक</span>
+                <span class="lang-content bn">উদ্ভিদ কলা</span>
+            </h2>
+            <p>
+                <span class="lang-content en">Plant tissues are broadly divided into two types: Meristematic and Permanent tissues.</span>
+                <span class="lang-content hi">पादप ऊतकों को मोटे तौर पर दो प्रकारों में विभाजित किया गया है: विभज्योतक और स्थायी ऊतक।</span>
+                <span class="lang-content bn">উদ্ভিদ কলাকে প্রধানত দুটি ভাগে ভাগ করা হয়: ভাজক কলা এবং স্থায়ী কলা।</span>
+            </p>
+            <h3>
+                <span class="lang-content en">Meristematic Tissue (Dividing Tissue)</span>
+                <span class="lang-content hi">विभज्योतक ऊतक (विभाजन ऊतक)</span>
+                <span class="lang-content bn">ভাজক কলা (বিভাজনক্ষম কলা)</span>
+            </h3>
+            <p>
+                <span class="lang-content en">These are found in the growing regions of the plant. Their cells actively divide to produce new cells. Types include Apical (at tips), Lateral (increases girth), and Intercalary (at the base of leaves).</span>
+                <span class="lang-content hi">ये पौधे के बढ़ते क्षेत्रों में पाए जाते हैं। इनकी कोशिकाएँ नई कोशिकाओं का उत्पादन करने के लिए सक्रिय रूप से विभाजित होती हैं। प्रकारों में एपिकल (टिप्स पर), लेटरल (परिधि बढ़ाता है), और इंटरकैलेरी (पत्तियों के आधार पर) शामिल हैं।</span>
+                <span class="lang-content bn">এগুলি উদ্ভিদের ক্রমবর্ধমান অঞ্চলে পাওয়া যায়। এদের কোষগুলি সক্রিয়ভাবে বিভাজিত হয়ে নতুন কোষ তৈরি করে। এর প্রকারগুলি হলো অগ্রস্থ (শীর্ষে), পার্শ্বস্থ (পরিধি বৃদ্ধি করে), এবং নিবেশিত (পাতার গোড়ায়)।</span>
+            </p>
+            <h3>
+                <span class="lang-content en">Permanent Tissue</span>
+                <span class="lang-content hi">स्थायी ऊतक</span>
+                <span class="lang-content bn">স্থায়ী কলা</span>
+            </h3>
+            <p>
+                <span class="lang-content en">These tissues are formed from meristematic cells that have lost the ability to divide and have taken up a specific role. They are of two types:</span>
+                <span class="lang-content hi">ये ऊतक विभज्योतक कोशिकाओं से बनते हैं जो विभाजित होने की क्षमता खो चुके हैं और एक विशिष्ट भूमिका निभाते हैं। ये दो प्रकार के होते हैं:</span>
+                <span class="lang-content bn">এই কলাগুলি ভাজক কলা থেকে তৈরি হয় যা বিভাজনের ক্ষমতা হারিয়ে একটি নির্দিষ্ট ভূমিকা গ্রহণ করেছে। এগুলি দুই প্রকারের:</span>
+            </p>
+            <ul class="styled-list">
+                 <li>
+                    <span class="lang-content en"><strong>Simple Permanent Tissue:</strong> Made of one type of cell. Includes Parenchyma (storage), Collenchyma (flexibility), and Sclerenchyma (hardness).</span>
+                    <span class="lang-content hi"><strong>सरल स्थायी ऊतक:</strong> एक ही प्रकार की कोशिकाओं से बना है। इसमें पैरेन्काइमा (भंडारण), कोलेनकाइमा (लचीलापन), और स्क्लेरेन्काइमा (कठोरता) शामिल हैं।</span>
+                    <span class="lang-content bn"><strong>সরল স্থায়ী কলা:</strong> এক প্রকারের কোষ দ্বারা গঠিত। এর মধ্যে রয়েছে প্যারেনকাইমা (সঞ্চয়), কোলেনকাইমা (নমনীয়তা), এবং স্ক্লেরেনকাইমা (দৃঢ়তা)।</span>
+                </li>
+                <li>
+                    <span class="lang-content en"><strong>Complex Permanent Tissue:</strong> Made of more than one type of cell. Includes Xylem (water transport) and Phloem (food transport).</span>
+                    <span class="lang-content hi"><strong>जटिल स्थायी ऊतक:</strong> एक से अधिक प्रकार की कोशिकाओं से बना है। इसमें जाइलम (जल परिवहन) और फ्लोएम (खाद्य परिवहन) शामिल हैं।</span>
+                    <span class="lang-content bn"><strong>জটিল স্থায়ী কলা:</strong> একাধিক প্রকারের কোষ দ্বারা গঠিত। এর মধ্যে রয়েছে জাইলেম (জল পরিবহন) এবং ফ্লোয়েম (খাদ্য পরিবহন)।</span>
+                </li>
+            </ul>
+
+            <h2>
+                <span class="lang-content en">Animal Tissues</span>
+                <span class="lang-content hi">जंतु ऊतक</span>
+                <span class="lang-content bn">প্রাণী কলা</span>
+            </h2>
+            <p>
+                <span class="lang-content en">Animal tissues are grouped into four main types based on their function.</span>
+                <span class="lang-content hi">जंतु ऊतकों को उनके कार्य के आधार पर चार मुख्य प्रकारों में बांटा गया है।</span>
+                <span class="lang-content bn">প্রাণী কলাকে তাদের কার্যের ভিত্তিতে চারটি প্রধান ভাগে ভাগ করা হয়।</span>
+            </p>
+             <ul class="styled-list">
+                <li>
+                    <span class="lang-content en"><strong>Epithelial Tissue:</strong> Forms a protective covering throughout the body (e.g., skin, lining of the mouth).</span>
+                    <span class="lang-content hi"><strong>एपिथीलियमी ऊतक:</strong> पूरे शरीर में एक सुरक्षात्मक आवरण बनाता है (जैसे, त्वचा, मुंह की परत)।</span>
+                    <span class="lang-content bn"><strong>আবরণী কলা:</strong> সারা শরীরে একটি সুরক্ষামূলক আবরণ তৈরি করে (যেমন, ত্বক, মুখের আস্তরণ)।</span>
+                </li>
+                <li>
+                    <span class="lang-content en"><strong>Connective Tissue:</strong> Connects different organs and tissues. Examples include blood, bone, cartilage, and ligaments.</span>
+                    <span class="lang-content hi"><strong>संयोजी ऊतक:</strong> विभिन्न अंगों और ऊतकों को जोड़ता है। उदाहरणों में रक्त, हड्डी, उपास्थि और स्नायुबंधन शामिल हैं।</span>
+                    <span class="lang-content bn"><strong>যোগ কলা:</strong> বিভিন্ন অঙ্গ এবং কলাকে সংযুক্ত করে। উদাহরণস্বরূপ রক্ত, অস্থি, তরুণাস্থি এবং লিগামেন্ট।</span>
+                </li>
+                 <li>
+                    <span class="lang-content en"><strong>Muscular Tissue:</strong> Responsible for movement. Consists of Striated (voluntary), Smooth (involuntary), and Cardiac (heart) muscles.</span>
+                    <span class="lang-content hi"><strong>पेशीय ऊतक:</strong> गति के लिए जिम्मेदार। इसमें रेखित (स्वैच्छिक), चिकनी (अनैच्छिक), और कार्डियक (हृदय) मांसपेशियां होती हैं।</span>
+                    <span class="lang-content bn"><strong>পেশী কলা:</strong> চলাচলের জন্য দায়ী। এর মধ্যে রয়েছে সরেখ (ঐচ্ছিক), মসৃণ (অনৈচ্ছিক), এবং হৃদ (হৃৎপিণ্ড) পেশী।</span>
+                </li>
+                 <li>
+                    <span class="lang-content en"><strong>Nervous Tissue:</strong> Transmits stimuli very rapidly from one place to another. Composed of nerve cells or neurons.</span>
+                    <span class="lang-content hi"><strong>तंत्रिका ऊतक:</strong> उत्तेजनाओं को एक स्थान से दूसरे स्थान तक बहुत तेजी से पहुंचाता है। तंत्रिका कोशिकाओं या न्यूरॉन्स से बना है।</span>
+                    <span class="lang-content bn"><strong>স্নায়ু কলা:</strong> উদ্দীপনাকে খুব দ্রুত এক স্থান থেকে অন্য স্থানে প্রেরণ করে। এটি স্নায়ু কোষ বা নিউরন দ্বারা গঠিত।</span>
+                </li>
+            </ul>
+
+        </main>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const langContents = document.querySelectorAll('.lang-content');
+
+        function switchLanguage(lang) {
+            localStorage.setItem('userLanguage', lang);
+
+            langButtons.forEach(button => {
+                button.classList.remove('active');
+                if (button.id === `btn-${lang}`) {
+                    button.classList.add('active');
+                }
+            });
+
+            langContents.forEach(content => {
+                content.style.display = 'none';
+            });
+
+            const activeContents = document.querySelectorAll(`.${lang}`);
+            activeContents.forEach(content => {
+                content.style.display = 'inline';
+            });
+        }
+
+        langButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const lang = button.id.split('-')[1];
+                switchLanguage(lang);
+            });
+        });
+
+        const savedLang = localStorage.getItem('userLanguage');
+        if (savedLang) {
+            switchLanguage(savedLang);
+        } else {
+            switchLanguage('en');
+        }
+    });
+</script>
+
+</body>
+</html>

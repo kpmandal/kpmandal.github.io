@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 12: Improvement in Food Resources</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap');
+
+        :root {
+            --bg-color: #e3f2fd; /* Light sky blue */
+            --card-bg: #ffffff;
+            --text-color: #37474f;
+            --header-color: #0d47a1; /* Deep blue */
+            --accent-color: #ffc107; /* Amber yellow */
+            --accent-light: #fffbe6; /* Light yellow for boxes */
+            --card-shadow: rgba(0, 0, 0, 0.1);
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'Nunito', sans-serif;
+            color: var(--text-color);
+            margin: 0;
+            padding: 30px;
+            line-height: 1.7;
+        }
+
+        .note-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            border-radius: 24px;
+            padding: 30px 40px;
+            box-shadow: 0 8px 0 0 #bdbdbd, 0 8px 15px 0 var(--card-shadow);
+        }
+        
+        .nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .back-link {
+            display: inline-block;
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 800;
+            box-shadow: 0 4px 0 0 #d1d1d1;
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
+        }
+
+        .back-link:hover {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 0 #d1d1d1;
+        }
+
+        .language-selector {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            padding: 10px 20px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            border: none;
+            border-radius: 16px;
+            background-color: #e9e9e9;
+            color: #555;
+            cursor: pointer;
+            box-shadow: 0 4px 0 0 #c9c9c9;
+            transition: all 0.1s ease;
+        }
+
+        .lang-btn:hover { background-color: #dfdfdf; }
+
+        .lang-btn.active {
+            background-color: var(--accent-color);
+            color: #333;
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 0 #c79100;
+        }
+        
+        .chapter-header { text-align: center; border-bottom: 2px solid var(--border-color); padding-bottom: 30px; margin-bottom: 40px; }
+        .chapter-header h1 { font-size: 2.8rem; font-weight: 800; color: var(--header-color); margin: 0; }
+        .chapter-tag { display: inline-block; background-color: var(--accent-color); color: #333; font-weight: 800; padding: 6px 16px; border-radius: 16px; margin-top: 15px; font-size: 1rem; }
+        
+        main h2 { font-size: 2rem; font-weight: 800; color: var(--header-color); margin-top: 40px; margin-bottom: 20px; }
+        main h3 { font-size: 1.5rem; font-weight: 700; color: #1976d2; margin-top: 30px; margin-bottom: 15px; }
+        p, li { font-size: 1.1rem; color: var(--text-color); }
+        strong { font-weight: 700; color: #263238; }
+
+        .key-concept-box { background-color: var(--accent-light); border-left: 6px solid var(--accent-color); border-radius: 8px; padding: 20px; margin: 30px 0; }
+        .key-concept-box p { margin: 0; font-size: 1.1rem; font-weight: 700; }
+
+        .styled-list { list-style: none; padding-left: 0; }
+        .styled-list li { padding-left: 35px; position: relative; margin-bottom: 10px; }
+        .styled-list li::before { content: '🌾'; position: absolute; left: 0; top: 4px; font-size: 1.2rem; }
+
+        .lang-content { display: none; }
+
+        @media (max-width: 768px) {
+            body { padding: 15px; }
+            .note-container { padding: 25px; }
+            .chapter-header h1 { font-size: 2.2rem; }
+            .nav-header { flex-direction: column-reverse; align-items: stretch; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="note-container">
+        <header class="nav-header">
+            <a href="index.html" class="back-link">
+                <span class="lang-content en">← Back to Index</span>
+                <span class="lang-content hi">← सूची पर वापस जाएं</span>
+                <span class="lang-content bn">← সূচিপত্রে ফিরে যান</span>
+            </a>
+            <div class="language-selector">
+                <button id="btn-en" class="lang-btn">English</button>
+                <button id="btn-hi" class="lang-btn">हिन्दी</button>
+                <button id="btn-bn" class="lang-btn">বাংলা</button>
+            </div>
+        </header>
+
+        <header class="chapter-header">
+            <h1>
+                <span class="lang-content en">Improvement in Food Resources 🌾</span>
+                <span class="lang-content hi">खाद्य संसाधनों में सुधार 🌾</span>
+                <span class="lang-content bn">খাদ্য সম্পদের উন্নতি 🌾</span>
+            </h1>
+            <div class="chapter-tag">
+                <span class="lang-content en">Chapter 12</span>
+                <span class="lang-content hi">अध्याय 12</span>
+                <span class="lang-content bn">অধ্যায় ১২</span>
+            </div>
+        </header>
+
+        <main>
+            <h2>
+                <span class="lang-content en">Improvement in Crop Yields</span>
+                <span class="lang-content hi">फसल की पैदावार में सुधार</span>
+                <span class="lang-content bn">ফসলের ফলন বৃদ্ধি</span>
+            </h2>
+            <p>
+                <span class="lang-content en">To meet the demands of a growing population, it is necessary to improve the yield of crops. This can be achieved through three main activities.</span>
+                <span class="lang-content hi">बढ़ती जनसंख्या की मांगों को पूरा करने के लिए, फसलों की पैदावार में सुधार करना आवश्यक है। यह तीन मुख्य गतिविधियों के माध्यम से प्राप्त किया जा सकता है।</span>
+                <span class="lang-content bn">ক্রমবর্ধমান জনসংখ্যার চাহিদা মেটাতে ফসলের ফলন উন্নত করা প্রয়োজন। এটি তিনটি প্রধান কার্যক্রমের মাধ্যমে অর্জন করা যেতে পারে।</span>
+            </p>
+            <ul class="styled-list">
+                <li>
+                    <span class="lang-content en"><strong>Crop Variety Improvement:</strong> Selecting crop varieties for desirable traits like high yield, disease resistance, and better quality through hybridisation and genetic modification.</span>
+                    <span class="lang-content hi"><strong>फसल किस्म सुधार:</strong> संकरण और आनुवंशिक संशोधन के माध्यम से उच्च उपज, रोग प्रतिरोधक क्षमता और बेहतर गुणवत्ता जैसे वांछनीय लक्षणों के लिए फसल की किस्मों का चयन करना।</span>
+                    <span class="lang-content bn"><strong>শস্যের জাতের উন্নতি:</strong> সংকরায়ন এবং জেনেটিক পরিবর্তনের মাধ্যমে উচ্চ ফলন, রোগ প্রতিরোধ ক্ষমতা এবং উন্নত মানের মতো কাঙ্ক্ষিত বৈশিষ্ট্যের জন্য শস্যের জাত নির্বাচন করা।</span>
+                </li>
+                <li>
+                    <span class="lang-content en"><strong>Crop Production Management:</strong> Managing farming practices to get the best yield. This includes nutrient management (manures, fertilisers), irrigation, and cropping patterns (mixed, inter-cropping, crop rotation).</span>
+                    <span class="lang-content hi"><strong>फसल उत्पादन प्रबंधन:</strong> सर्वोत्तम उपज प्राप्त करने के लिए कृषि पद्धतियों का प्रबंधन करना। इसमें पोषक तत्व प्रबंधन (खाद, उर्वरक), सिंचाई और फसल पैटर्न (मिश्रित, अंतर-फसल, फसल चक्र) शामिल हैं।</span>
+                    <span class="lang-content bn"><strong>ফসল উৎপাদন ব্যবস্থাপনা:</strong> সেরা ফলন পেতে চাষাবাদের পদ্ধতি পরিচালনা করা। এর মধ্যে রয়েছে পুষ্টি ব্যবস্থাপনা (সার, জৈবসার), সেচ, এবং শস্য বিন্যাস (মিশ্র, আন্তঃফসল, শস্য ঘূর্ণন)।</span>
+                </li>
+                 <li>
+                    <span class="lang-content en"><strong>Crop Protection Management:</strong> Protecting crops from weeds, insect pests, and diseases using pesticides, herbicides, or biological control methods.</span>
+                    <span class="lang-content hi"><strong>फसल सुरक्षा प्रबंधन:</strong> कीटनाशकों, शाकनाशियों या जैविक नियंत्रण विधियों का उपयोग करके फसलों को खरपतवार, कीड़ों और बीमारियों से बचाना।</span>
+                    <span class="lang-content bn"><strong>ফসল সুরক্ষা ব্যবস্থাপনা:</strong> আগাছা, পোকামাকড় এবং রোগ থেকে ফসল রক্ষা করার জন্য কীটনাশক, আগাছানাশক বা জৈবিক নিয়ন্ত্রণ পদ্ধতি ব্যবহার করা।</span>
+                </li>
+            </ul>
+
+            <div class="key-concept-box">
+                <p>
+                    <span class="lang-content en">Organic farming is a system that avoids or largely excludes the use of synthetic fertilisers, pesticides, and genetically modified organisms.</span>
+                    <span class="lang-content hi">जैविक खेती एक ऐसी प्रणाली है जो सिंथेटिक उर्वरकों, कीटनाशकों और आनुवंशिक रूप से संशोधित जीवों के उपयोग से बचती है या काफी हद तक उन्हें बाहर रखती है।</span>
+                    <span class="lang-content bn">জৈব চাষ হলো এমন একটি পদ্ধতি যা কৃত্রিম সার, কীটনাশক এবং জেনেটিক্যালি মডিফাইড জীবের ব্যবহার এড়িয়ে চলে বা মূলত বর্জন করে।</span>
+                </p>
+            </div>
+
+            <h2>
+                <span class="lang-content en">Animal Husbandry</span>
+                <span class="lang-content hi">पशुपालन</span>
+                <span class="lang-content bn">পশুপালন</span>
+            </h2>
+            <p>
+                <span class="lang-content en">Animal husbandry is the scientific management of animal livestock. It includes various aspects such as feeding, breeding, and disease control.</span>
+                <span class="lang-content hi">पशुपालन पशुधन का वैज्ञानिक प्रबंधन है। इसमें भोजन, प्रजनन और रोग नियंत्रण जैसे विभिन्न पहलू शामिल हैं।</span>
+                <span class="lang-content bn">পশুপালন হলো গবাদি পশুর বৈজ্ঞানিক ব্যবস্থাপনা। এর মধ্যে খাদ্য প্রদান, প্রজনন এবং রোগ নিয়ন্ত্রণের মতো বিভিন্ন দিক অন্তর্ভুক্ত রয়েছে।</span>
+            </p>
+            <ul class="styled-list">
+                 <li>
+                    <span class="lang-content en"><strong>Cattle Farming:</strong> Done for two purposes – milk (milch animals) and draught labour for agriculture (draught animals).</span>
+                    <span class="lang-content hi"><strong>पशुपालन:</strong> दो उद्देश्यों के लिए किया जाता है - दूध (दुधारू पशु) और कृषि के लिए भारवाही श्रम (भारवाही पशु)।</span>
+                    <span class="lang-content bn"><strong>গবাদি পশু পালন:</strong> দুটি উদ্দেশ্যে করা হয় - দুধ (দুগ্ধবতী পশু) এবং কৃষিকাজের জন্য ভারবাহী শ্রম (ভারবাহী পশু)।</span>
+                </li>
+                <li>
+                    <span class="lang-content en"><strong>Poultry Farming:</strong> The rearing of domesticated fowl (chickens) for egg production (layers) and meat production (broilers).</span>
+                    <span class="lang-content hi"><strong>मुर्गी पालन:</strong> अंडा उत्पादन (लेयर्स) और मांस उत्पादन (ब्रॉयलर) के लिए पालतू मुर्गी (चिकन) का पालन।</span>
+                    <span class="lang-content bn"><strong>পোল্ট্রি পালন:</strong> ডিম উৎপাদনের (লেয়ার) এবং মাংস উৎপাদনের (ব্রয়লার) জন্য গৃহপালিত মুরগির প্রতিপালন।</span>
+                </li>
+                <li>
+                    <span class="lang-content en"><strong>Fish Production:</strong> Obtaining fish from natural sources (capture fishing) or by fish farming (culture fishery). This can be done in marine (seas) or inland (freshwater) ecosystems.</span>
+                    <span class="lang-content hi"><strong>मछली उत्पादन:</strong> प्राकृतिक स्रोतों से मछली प्राप्त करना (पकड़ना) या मछली पालन (संवर्धन मत्स्य पालन) द्वारा। यह समुद्री (समुद्र) या अंतर्देशीय (मीठे पानी) पारिस्थितिक तंत्र में किया जा सकता है।</span>
+                    <span class="lang-content bn"><strong>মৎস্য উৎপাদন:</strong> প্রাকৃতিক উৎস থেকে মাছ ধরা (ক্যাপচার ফিশিং) অথবা মাছ চাষের (কালচার ফিশারি) মাধ্যমে মাছ পাওয়া। এটি সামুদ্রিক (সমুদ্র) বা অভ্যন্তরীণ (মিঠা জল) বাস্তুতন্ত্রে করা যেতে পারে।</span>
+                </li>
+                <li>
+                    <span class="lang-content en"><strong>Bee-keeping (Apiculture):</strong> Rearing honey bees for honey and beeswax.</span>
+                    <span class="lang-content hi"><strong>मधुमक्खी पालन (एपिकल्चर):</strong> शहद और मोम के लिए मधुमक्खियों का पालन।</span>
+                    <span class="lang-content bn"><strong>মৌমাছি পালন (এপিকালচার):</strong> মধু এবং মোমের জন্য মৌমাছির প্রতিপালন।</span>
+                </li>
+            </ul>
+
+        </main>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const langContents = document.querySelectorAll('.lang-content');
+
+        function switchLanguage(lang) {
+            localStorage.setItem('userLanguage', lang);
+
+            langButtons.forEach(button => {
+                button.classList.remove('active');
+                if (button.id === `btn-${lang}`) {
+                    button.classList.add('active');
+                }
+            });
+
+            langContents.forEach(content => {
+                content.style.display = 'none';
+            });
+
+            const activeContents = document.querySelectorAll(`.${lang}`);
+            activeContents.forEach(content => {
+                content.style.display = 'inline';
+            });
+        }
+
+        langButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const lang = button.id.split('-')[1];
+                switchLanguage(lang);
+            });
+        });
+
+        const savedLang = localStorage.getItem('userLanguage');
+        if (savedLang) {
+            switchLanguage(savedLang);
+        } else {
+            switchLanguage('en');
+        }
+    });
+</script>
+
+</body>
+</html>

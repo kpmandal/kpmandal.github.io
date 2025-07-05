@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 8: Force and Laws of Motion</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap');
+
+        :root {
+            --bg-color: #e3f2fd; /* Light sky blue */
+            --card-bg: #ffffff;
+            --text-color: #37474f;
+            --header-color: #0d47a1; /* Deep blue */
+            --accent-color: #ffc107; /* Amber yellow */
+            --accent-light: #fffbe6; /* Light yellow for boxes */
+            --card-shadow: rgba(0, 0, 0, 0.1);
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'Nunito', sans-serif;
+            color: var(--text-color);
+            margin: 0;
+            padding: 30px;
+            line-height: 1.7;
+        }
+
+        .note-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            border-radius: 24px;
+            padding: 30px 40px;
+            box-shadow: 0 8px 0 0 #bdbdbd, 0 8px 15px 0 var(--card-shadow);
+        }
+        
+        .nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .back-link {
+            display: inline-block;
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 800;
+            box-shadow: 0 4px 0 0 #d1d1d1;
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
+        }
+
+        .back-link:hover {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 0 #d1d1d1;
+        }
+
+        .language-selector {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            padding: 10px 20px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            border: none;
+            border-radius: 16px;
+            background-color: #e9e9e9;
+            color: #555;
+            cursor: pointer;
+            box-shadow: 0 4px 0 0 #c9c9c9;
+            transition: all 0.1s ease;
+        }
+
+        .lang-btn:hover { background-color: #dfdfdf; }
+
+        .lang-btn.active {
+            background-color: var(--accent-color);
+            color: #333;
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 0 #c79100;
+        }
+        
+        .chapter-header { text-align: center; border-bottom: 2px solid var(--border-color); padding-bottom: 30px; margin-bottom: 40px; }
+        .chapter-header h1 { font-size: 2.8rem; font-weight: 800; color: var(--header-color); margin: 0; }
+        .chapter-tag { display: inline-block; background-color: var(--accent-color); color: #333; font-weight: 800; padding: 6px 16px; border-radius: 16px; margin-top: 15px; font-size: 1rem; }
+        
+        main h2 { font-size: 2rem; font-weight: 800; color: var(--header-color); margin-top: 40px; margin-bottom: 20px; }
+        main h3 { font-size: 1.5rem; font-weight: 700; color: #1976d2; margin-top: 30px; margin-bottom: 15px; }
+        p, li { font-size: 1.1rem; color: var(--text-color); }
+        strong { font-weight: 700; color: #263238; }
+
+        .key-concept-box { background-color: var(--accent-light); border-left: 6px solid var(--accent-color); border-radius: 8px; padding: 20px; margin: 30px 0; }
+        .key-concept-box p { margin: 0; font-size: 1.1rem; font-weight: 700; }
+
+        .styled-list { list-style: none; padding-left: 0; }
+        .styled-list li { padding-left: 35px; position: relative; margin-bottom: 10px; }
+        .styled-list li::before { content: '💪'; position: absolute; left: 0; top: 4px; font-size: 1.2rem; }
+
+        .lang-content { display: none; }
+
+        @media (max-width: 768px) {
+            body { padding: 15px; }
+            .note-container { padding: 25px; }
+            .chapter-header h1 { font-size: 2.2rem; }
+            .nav-header { flex-direction: column-reverse; align-items: stretch; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="note-container">
+        <header class="nav-header">
+            <a href="index.html" class="back-link">
+                <span class="lang-content en">← Back to Index</span>
+                <span class="lang-content hi">← सूची पर वापस जाएं</span>
+                <span class="lang-content bn">← সূচিপত্রে ফিরে যান</span>
+            </a>
+            <div class="language-selector">
+                <button id="btn-en" class="lang-btn">English</button>
+                <button id="btn-hi" class="lang-btn">हिन्दी</button>
+                <button id="btn-bn" class="lang-btn">বাংলা</button>
+            </div>
+        </header>
+
+        <header class="chapter-header">
+            <h1>
+                <span class="lang-content en">Force and Laws of Motion 💪</span>
+                <span class="lang-content hi">बल तथा गति के नियम 💪</span>
+                <span class="lang-content bn">বল এবং গতির সূত্র 💪</span>
+            </h1>
+            <div class="chapter-tag">
+                <span class="lang-content en">Chapter 8</span>
+                <span class="lang-content hi">अध्याय 8</span>
+                <span class="lang-content bn">অধ্যায় ৮</span>
+            </div>
+        </header>
+
+        <main>
+            <h2>
+                <span class="lang-content en">Balanced and Unbalanced Forces</span>
+                <span class="lang-content hi">संतुलित और असंतुलित बल</span>
+                <span class="lang-content bn">প্রতিমিত এবং অপ্রতিমিত বল</span>
+            </h2>
+            <p>
+                <span class="lang-content en">A force is a push or pull on an object. Forces can change the state of motion or shape of an object.</span>
+                <span class="lang-content hi">बल किसी वस्तु पर एक धक्का या खिंचाव है। बल किसी वस्तु की गति की स्थिति या आकार को बदल सकते हैं।</span>
+                <span class="lang-content bn">বল হল কোনো বস্তুর উপর একটি ধাক্কা বা টান। বল বস্তুর গতির অবস্থা বা আকৃতি পরিবর্তন করতে পারে।</span>
+            </p>
+            <ul class="styled-list">
+                <li>
+                    <span class="lang-content en"><strong>Balanced Forces:</strong> Do not change the state of motion of an object. The net force is zero.</span>
+                    <span class="lang-content hi"><strong>संतुलित बल:</strong> किसी वस्तु की गति की स्थिति को नहीं बदलते हैं। कुल बल शून्य होता है।</span>
+                    <span class="lang-content bn"><strong>প্রতিমিত বল:</strong> বস্তুর গতির অবস্থার পরিবর্তন করে না। মোট বল শূন্য হয়।</span>
+                </li>
+                <li>
+                    <span class="lang-content en"><strong>Unbalanced Forces:</strong> Cause a change in the state of motion of an object (i.e., they produce acceleration).</span>
+                    <span class="lang-content hi"><strong>असंतुलित बल:</strong> किसी वस्तु की गति की स्थिति में परिवर्तन का कारण बनते हैं (अर्थात, वे त्वरण उत्पन्न करते हैं)।</span>
+                    <span class="lang-content bn"><strong>অপ্রতিমিত বল:</strong> বস্তুর গতির অবস্থার পরিবর্তনের কারণ হয় (অর্থাৎ, তারা ত্বরণ সৃষ্টি করে)।</span>
+                </li>
+            </ul>
+
+            <h2>
+                <span class="lang-content en">Newton's Laws of Motion</span>
+                <span class="lang-content hi">न्यूटन के गति के नियम</span>
+                <span class="lang-content bn">নিউটনের গতিসূত্র</span>
+            </h2>
+            <h3>
+                <span class="lang-content en">First Law of Motion (Law of Inertia)</span>
+                <span class="lang-content hi">गति का पहला नियम (जड़त्व का नियम)</span>
+                <span class="lang-content bn">প্রথম গতিসূত্র (জাড্য সূত্র)</span>
+            </h3>
+            <p>
+                <span class="lang-content en">An object remains in a state of rest or of uniform motion in a straight line unless compelled to change that state by an applied unbalanced force. <strong>Inertia</strong> is the natural tendency of an object to resist a change in its state of motion. Mass is a measure of inertia.</span>
+                <span class="lang-content hi">कोई वस्तु तब तक स्थिर अवस्था में या एक सीधी रेखा में एकसमान गति की अवस्था में रहती है, जब तक कि उस पर कोई बाहरी असंतुलित बल लगाकर उसकी अवस्था को बदलने के लिए मजबूर न किया जाए। <strong>जड़त्व</strong> किसी वस्तु की अपनी गति की स्थिति में परिवर्तन का विरोध करने की प्राकृतिक प्रवृत्ति है। द्रव्यमान जड़त्व का एक माप है।</span>
+                <span class="lang-content bn">কোনো বস্তু স্থির অবস্থায় বা সরলরেখায় সুষম গতিতে চলতে থাকে যতক্ষণ না বাইরে থেকে কোনো অপ্রতিমিত বল প্রয়োগ করে তার অবস্থার পরিবর্তন করতে বাধ্য করা হয়। <strong>জাড্য</strong> হলো বস্তুর তার গতির অবস্থার পরিবর্তনকে বাধা দেওয়ার স্বাভাবিক প্রবণতা। ভর হলো জাড্যের পরিমাপ।</span>
+            </p>
+
+             <div class="key-concept-box">
+                <p>
+                    <span class="lang-content en">The Second Law of Motion states that the rate of change of momentum of an object is proportional to the applied unbalanced force in the direction of the force.</span>
+                    <span class="lang-content hi">गति का दूसरा नियम कहता है कि किसी वस्तु के संवेग में परिवर्तन की दर बल की दिशा में लगाए गए असंतुलित बल के समानुपाती होती है।</span>
+                    <span class="lang-content bn">দ্বিতীয় গতিসূত্র অনুযায়ী, কোনো বস্তুর ভরবেগের পরিবর্তনের হার প্রযুক্ত অপ্রতিমিত বলের সমানুপাতিক এবং বলের দিকেই ঘটে।</span>
+                </p>
+            </div>
+            
+            <h3>
+                <span class="lang-content en">Second Law of Motion</span>
+                <span class="lang-content hi">गति का दूसरा नियम</span>
+                <span class="lang-content bn">দ্বিতীয় গতিসূত্র</span>
+            </h3>
+             <p>
+                <span class="lang-content en">This law gives us a formula to measure force: <strong>Force = mass × acceleration (F = ma)</strong>. The SI unit of force is the newton (N). <strong>Momentum (p)</strong> is the product of mass and velocity (p = mv).</span>
+                <span class="lang-content hi">यह नियम हमें बल को मापने का एक सूत्र देता है: <strong>बल = द्रव्यमान × त्वरण (F = ma)</strong>। बल का SI मात्रक न्यूटन (N) है। <strong>संवेग (p)</strong> द्रव्यमान और वेग का गुणनफल है (p = mv)।</span>
+                <span class="lang-content bn">এই সূত্রটি আমাদের বল পরিমাপের একটি ফর্মুলা দেয়: <strong>বল = ভর × ত্বরণ (F = ma)</strong>। বলের SI একক হলো নিউটন (N)। <strong>ভরবেগ (p)</strong> হলো ভর এবং বেগের গুণফল (p = mv)।</span>
+            </p>
+
+            <h3>
+                <span class="lang-content en">Third Law of Motion</span>
+                <span class="lang-content hi">गति का तीसरा नियम</span>
+                <span class="lang-content bn">তৃতীয় গতিসূত্র</span>
+            </h3>
+            <p>
+                <span class="lang-content en">To every action, there is an equal and opposite reaction. These two forces act on two different bodies. For example, a rocket pushes gas downwards (action), and the gas pushes the rocket upwards (reaction).</span>
+                <span class="lang-content hi">प्रत्येक क्रिया के लिए, एक समान और विपरीत प्रतिक्रिया होती है। ये दोनों बल दो अलग-अलग पिंडों पर कार्य करते हैं। उदाहरण के लिए, एक रॉकेट गैस को नीचे की ओर धकेलता है (क्रिया), और गैस रॉकेट को ऊपर की ओर धकेलती है (प्रतिक्रिया)।</span>
+                <span class="lang-content bn">প্রত্যেক ক্রিয়ারই একটি সমান ও বিপরীত প্রতিক্রিয়া আছে। এই দুটি বল দুটি ভিন্ন বস্তুর উপর কাজ করে। উদাহরণস্বরূপ, একটি রকেট গ্যাসকে নীচের দিকে ঠেলে দেয় (ক্রিয়া), এবং গ্যাস রকেটকে উপরের দিকে ঠেলে দেয় (প্রতিক্রিয়া)।</span>
+            </p>
+            
+            <h2>
+                <span class="lang-content en">Conservation of Momentum</span>
+                <span class="lang-content hi">संवेग संरक्षण</span>
+                <span class="lang-content bn">ভরবেগের সংরক্ষণ সূত্র</span>
+            </h2>
+            <p>
+                <span class="lang-content en">In the absence of an external force, the total momentum of a system of two or more interacting objects remains constant. The total momentum before a collision is equal to the total momentum after the collision.</span>
+                <span class="lang-content hi">किसी बाहरी बल की अनुपस्थिति में, दो या दो से अधिक परस्पर क्रिया करने वाली वस्तुओं के निकाय का कुल संवेग स्थिर रहता है। टक्कर से पहले का कुल संवेग टक्कर के बाद के कुल संवेग के बराबर होता है।</span>
+                <span class="lang-content bn">কোনো বাহ্যিক বলের অনুপস্থিতিতে, দুই বা ততোধিক মিথস্ক্রিয়াকারী বস্তুর একটি সিস্টেমের মোট ভরবেগ ধ্রুবক থাকে। সংঘর্ষের আগের মোট ভরবেগ সংঘর্ষের পরের মোট ভরবেগের সমান হয়।</span>
+            </p>
+
+        </main>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const langContents = document.querySelectorAll('.lang-content');
+
+        function switchLanguage(lang) {
+            localStorage.setItem('userLanguage', lang);
+
+            langButtons.forEach(button => {
+                button.classList.remove('active');
+                if (button.id === `btn-${lang}`) {
+                    button.classList.add('active');
+                }
+            });
+
+            langContents.forEach(content => {
+                content.style.display = 'none';
+            });
+
+            const activeContents = document.querySelectorAll(`.${lang}`);
+            activeContents.forEach(content => {
+                content.style.display = 'inline';
+            });
+        }
+
+        langButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const lang = button.id.split('-')[1];
+                switchLanguage(lang);
+            });
+        });
+
+        const savedLang = localStorage.getItem('userLanguage');
+        if (savedLang) {
+            switchLanguage(savedLang);
+        } else {
+            switchLanguage('en');
+        }
+    });
+</script>
+
+</body>
+</html>

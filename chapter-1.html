@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 1: Matter in Our Surroundings</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap');
+
+        :root {
+            --bg-color: #e3f2fd; /* Light sky blue */
+            --card-bg: #ffffff;
+            --text-color: #37474f;
+            --header-color: #0d47a1; /* Deep blue */
+            --accent-color: #ffc107; /* Amber yellow */
+            --accent-light: #fffbe6; /* Light yellow for boxes */
+            --card-shadow: rgba(0, 0, 0, 0.1);
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'Nunito', sans-serif;
+            color: var(--text-color);
+            margin: 0;
+            padding: 30px;
+            line-height: 1.7;
+        }
+
+        .note-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            border-radius: 24px;
+            padding: 30px 40px;
+            box-shadow: 0 8px 0 0 #bdbdbd, 0 8px 15px 0 var(--card-shadow);
+        }
+        
+        .nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .back-link {
+            display: inline-block;
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 800;
+            box-shadow: 0 4px 0 0 #d1d1d1;
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
+        }
+
+        .back-link:hover {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 0 #d1d1d1;
+        }
+
+        .language-selector {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            padding: 10px 20px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            border: none;
+            border-radius: 16px;
+            background-color: #e9e9e9;
+            color: #555;
+            cursor: pointer;
+            box-shadow: 0 4px 0 0 #c9c9c9;
+            transition: all 0.1s ease;
+        }
+
+        .lang-btn:hover {
+            background-color: #dfdfdf;
+        }
+
+        .lang-btn.active {
+            background-color: var(--accent-color);
+            color: #333;
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 0 #c79100;
+        }
+        
+        .chapter-header { text-align: center; border-bottom: 2px solid var(--border-color); padding-bottom: 30px; margin-bottom: 40px; }
+        .chapter-header h1 { font-size: 2.8rem; font-weight: 800; color: var(--header-color); margin: 0; }
+        .chapter-tag { display: inline-block; background-color: var(--accent-color); color: #333; font-weight: 800; padding: 6px 16px; border-radius: 16px; margin-top: 15px; font-size: 1rem; }
+        
+        main h2 { font-size: 2rem; font-weight: 800; color: var(--header-color); margin-top: 40px; margin-bottom: 20px; }
+        main h3 { font-size: 1.5rem; font-weight: 700; color: #1976d2; margin-top: 30px; margin-bottom: 15px; }
+        p, li { font-size: 1.1rem; color: var(--text-color); }
+        strong { font-weight: 700; color: #263238; }
+
+        .key-concept-box { background-color: var(--accent-light); border-left: 6px solid var(--accent-color); border-radius: 8px; padding: 20px; margin: 30px 0; }
+        .key-concept-box p { margin: 0; font-size: 1.1rem; font-weight: 700; }
+
+        .styled-list { list-style: none; padding-left: 0; }
+        .styled-list li { padding-left: 35px; position: relative; margin-bottom: 10px; }
+        .styled-list li::before { content: '✨'; position: absolute; left: 0; top: 4px; font-size: 1.2rem; }
+
+        /* The magic class to hide/show content */
+        .lang-content {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 15px; }
+            .note-container { padding: 25px; }
+            .chapter-header h1 { font-size: 2.2rem; }
+            .nav-header { flex-direction: column-reverse; align-items: stretch; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="note-container">
+        <header class="nav-header">
+            <a href="index.html" class="back-link">
+                <span class="lang-content en">← Back to Index</span>
+                <span class="lang-content hi">← सूची पर वापस जाएं</span>
+                <span class="lang-content bn">← সূচিপত্রে ফিরে যান</span>
+            </a>
+            <div class="language-selector">
+                <button id="btn-en" class="lang-btn">English</button>
+                <button id="btn-hi" class="lang-btn">हिन्दी</button>
+                <button id="btn-bn" class="lang-btn">বাংলা</button>
+            </div>
+        </header>
+
+        <header class="chapter-header">
+            <h1>
+                <span class="lang-content en">Matter in Our Surroundings 🧊</span>
+                <span class="lang-content hi">हमारे आस-पास के पदार्थ 🧊</span>
+                <span class="lang-content bn">আমাদের চারপাশের পদার্থ 🧊</span>
+            </h1>
+            <div class="chapter-tag">
+                <span class="lang-content en">Chapter 1</span>
+                <span class="lang-content hi">अध्याय 1</span>
+                <span class="lang-content bn">অধ্যায় ১</span>
+            </div>
+        </header>
+
+        <main>
+            <h2>
+                <span class="lang-content en">What is Matter?</span>
+                <span class="lang-content hi">पदार्थ क्या है?</span>
+                <span class="lang-content bn">পদার্থ কী?</span>
+            </h2>
+            <p>
+                <span class="lang-content en">Everything in this universe is made up of material which scientists have named "matter". The air we breathe, the food we eat, stones, clouds, stars, plants, and animals—are all matter.</span>
+                <span class="lang-content hi">इस ब्रह्मांड में सब कुछ उस सामग्री से बना है जिसे वैज्ञानिकों ने "पदार्थ" नाम दिया है। जिस हवा में हम सांस लेते हैं, जो भोजन हम खाते हैं, पत्थर, बादल, तारे, पौधे और जानवर - सभी पदार्थ हैं।</span>
+                <span class="lang-content bn">এই মহাবিশ্বের সবকিছুই এমন উপাদান দিয়ে তৈরি যাকে বিজ্ঞানীরা "পদার্থ" নাম দিয়েছেন। আমরা যে বাতাসে শ্বাস নিই, যে খাবার খাই, পাথর, মেঘ, তারা, গাছপালা এবং প্রাণী—সবই পদার্থ।</span>
+            </p>
+            
+            <div class="key-concept-box">
+                <p><strong>
+                    <span class="lang-content en">Key Idea: </span>
+                    <span class="lang-content hi">मुख्य विचार: </span>
+                    <span class="lang-content bn">মূল ধারণা: </span>
+                </strong>
+                <span class="lang-content en">Matter is anything that occupies space and has mass.</span>
+                <span class="lang-content hi">पदार्थ वह है जो स्थान घेरता है और जिसमें द्रव्यमान होता है।</span>
+                <span class="lang-content bn">পদার্থ হলো তাই যা স্থান দখল করে এবং যার ভর আছে।</span>
+                </p>
+            </div>
+
+            <h3>
+                <span class="lang-content en">Physical Nature of Matter</span>
+                <span class="lang-content hi">पदार्थ की भौतिक प्रकृति</span>
+                <span class="lang-content bn">পদার্থের ভৌত প্রকৃতি</span>
+            </h3>
+            <ul class="styled-list">
+                <li>
+                    <span class="lang-content en"><strong>Matter is made of tiny particles:</strong> These particles are too small to be seen with the naked eye.</span>
+                    <span class="lang-content hi"><strong>पदार्थ छोटे कणों से बना है:</strong> ये कण इतने छोटे होते हैं कि इन्हें नंगी आंखों से नहीं देखा जा सकता।</span>
+                    <span class="lang-content bn"><strong>পদার্থ ক্ষুদ্র কণা দ্বারা গঠিত:</strong> এই কণাগুলো এত ছোট যে খালি চোখে দেখা যায় না।</span>
+                </li>
+                <li>
+                    <span class="lang-content en"><strong>Particles of matter are continuously moving:</strong> They possess kinetic energy.</span>
+                    <span class="lang-content hi"><strong>पदार्थ के कण लगातार गतिमान रहते हैं:</strong> उनमें गतिज ऊर्जा होती है।</span>
+                    <span class="lang-content bn"><strong>পদার্থের কণাগুলো ক্রমাগত চলমান:</strong> তাদের গতিশক্তি আছে।</span>
+                </li>
+                <li>
+                    <span class="lang-content en"><strong>Particles of matter have space between them:</strong> Salt dissolves in water because its particles fit into the spaces.</span>
+                    <span class="lang-content hi"><strong>पदार्थ के कणों के बीच में जगह होती है:</strong> नमक पानी में घुल जाता है क्योंकि उसके कण पानी के कणों के बीच की जगह में समा जाते हैं।</span>
+                    <span class="lang-content bn"><strong>পদার্থের কণাগুলোর মধ্যে ফাঁকা জায়গা আছে:</strong> লবণ জলে দ্রবীভূত হয় কারণ এর কণাগুলো জলের কণার ফাঁকে ঢুকে যায়।</span>
+                </li>
+            </ul>
+
+            <h2>
+                <span class="lang-content en">States of Matter</span>
+                <span class="lang-content hi">पदार्थ की अवस्थाएँ</span>
+                <span class="lang-content bn">পদার্থের অবস্থা</span>
+            </h2>
+
+            <h3>
+                <span class="lang-content en">The Solid State 🧊</span>
+                <span class="lang-content hi">ठोस अवस्था 🧊</span>
+                <span class="lang-content bn">কঠিন অবস্থা 🧊</span>
+            </h3>
+            <ul class="styled-list">
+                <li>
+                    <span class="lang-content en">Have a definite shape and fixed volume.</span>
+                    <span class="lang-content hi">निश्चित आकार और निश्चित आयतन होता है।</span>
+                    <span class="lang-content bn">নির্দিষ্ট আকার এবং নির্দিষ্ট আয়তন আছে।</span>
+                </li>
+            </ul>
+
+            <h3>
+                <span class="lang-content en">The Liquid State 💧</span>
+                <span class="lang-content hi">द्रव अवस्था 💧</span>
+                <span class="lang-content bn">তরল অবস্থা 💧</span>
+            </h3>
+            <ul class="styled-list">
+                <li>
+                    <span class="lang-content en">Have a fixed volume but no fixed shape.</span>
+                    <span class="lang-content hi">निश्चित आयतन होता है लेकिन कोई निश्चित आकार नहीं होता।</span>
+                    <span class="lang-content bn">নির্দিষ্ট আয়তন আছে কিন্তু কোনো নির্দিষ্ট আকার নেই।</span>
+                </li>
+            </ul>
+
+            <h3>
+                <span class="lang-content en">The Gaseous State 💨</span>
+                <span class="lang-content hi">गैसीय अवस्था 💨</span>
+                <span class="lang-content bn">গ্যাসীয় অবস্থা 💨</span>
+            </h3>
+            <ul class="styled-list">
+                <li>
+                    <span class="lang-content en">Have neither a definite shape nor a fixed volume.</span>
+                    <span class="lang-content hi">न तो निश्चित आकार होता है और न ही निश्चित आयतन।</span>
+                    <span class="lang-content bn">নির্দিষ্ট আকার বা নির্দিষ্ট আয়তন কোনোটিই নেই।</span>
+                </li>
+            </ul>
+
+        </main>
+    </div>
+
+<script>
+    // Wait for the document to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+
+        // Get all language buttons and content elements
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const langContents = document.querySelectorAll('.lang-content');
+
+        // Function to switch language
+        function switchLanguage(lang) {
+            // Update active state on buttons
+            langButtons.forEach(button => {
+                button.classList.remove('active');
+                if (button.id === `btn-${lang}`) {
+                    button.classList.add('active');
+                }
+            });
+
+            // Hide all content elements
+            langContents.forEach(content => {
+                content.style.display = 'none';
+            });
+
+            // Show only the content for the selected language
+            const activeContents = document.querySelectorAll(`.${lang}`);
+            activeContents.forEach(content => {
+                // Use 'inline' because we used <span> tags. They will flow naturally.
+                content.style.display = 'inline';
+            });
+        }
+
+        // Add click event listeners to each button
+        langButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Get language from button ID (e.g., 'btn-en' -> 'en')
+                const lang = button.id.split('-')[1];
+                switchLanguage(lang);
+            });
+        });
+
+        // Set the initial language to English when the page loads
+        switchLanguage('en');
+    });
+</script>
+
+</body>
+</html>

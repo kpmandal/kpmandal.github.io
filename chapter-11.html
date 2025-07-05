@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 11: Sound</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap');
+
+        :root {
+            --bg-color: #e3f2fd; /* Light sky blue */
+            --card-bg: #ffffff;
+            --text-color: #37474f;
+            --header-color: #0d47a1; /* Deep blue */
+            --accent-color: #ffc107; /* Amber yellow */
+            --accent-light: #fffbe6; /* Light yellow for boxes */
+            --card-shadow: rgba(0, 0, 0, 0.1);
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'Nunito', sans-serif;
+            color: var(--text-color);
+            margin: 0;
+            padding: 30px;
+            line-height: 1.7;
+        }
+
+        .note-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            border-radius: 24px;
+            padding: 30px 40px;
+            box-shadow: 0 8px 0 0 #bdbdbd, 0 8px 15px 0 var(--card-shadow);
+        }
+        
+        .nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .back-link {
+            display: inline-block;
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 800;
+            box-shadow: 0 4px 0 0 #d1d1d1;
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
+        }
+
+        .back-link:hover {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 0 #d1d1d1;
+        }
+
+        .language-selector {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            padding: 10px 20px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            border: none;
+            border-radius: 16px;
+            background-color: #e9e9e9;
+            color: #555;
+            cursor: pointer;
+            box-shadow: 0 4px 0 0 #c9c9c9;
+            transition: all 0.1s ease;
+        }
+
+        .lang-btn:hover { background-color: #dfdfdf; }
+
+        .lang-btn.active {
+            background-color: var(--accent-color);
+            color: #333;
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 0 #c79100;
+        }
+        
+        .chapter-header { text-align: center; border-bottom: 2px solid var(--border-color); padding-bottom: 30px; margin-bottom: 40px; }
+        .chapter-header h1 { font-size: 2.8rem; font-weight: 800; color: var(--header-color); margin: 0; }
+        .chapter-tag { display: inline-block; background-color: var(--accent-color); color: #333; font-weight: 800; padding: 6px 16px; border-radius: 16px; margin-top: 15px; font-size: 1rem; }
+        
+        main h2 { font-size: 2rem; font-weight: 800; color: var(--header-color); margin-top: 40px; margin-bottom: 20px; }
+        main h3 { font-size: 1.5rem; font-weight: 700; color: #1976d2; margin-top: 30px; margin-bottom: 15px; }
+        p, li { font-size: 1.1rem; color: var(--text-color); }
+        strong { font-weight: 700; color: #263238; }
+
+        .key-concept-box { background-color: var(--accent-light); border-left: 6px solid var(--accent-color); border-radius: 8px; padding: 20px; margin: 30px 0; }
+        .key-concept-box p { margin: 0; font-size: 1.1rem; font-weight: 700; }
+
+        .styled-list { list-style: none; padding-left: 0; }
+        .styled-list li { padding-left: 35px; position: relative; margin-bottom: 10px; }
+        .styled-list li::before { content: '🔊'; position: absolute; left: 0; top: 4px; font-size: 1.2rem; }
+
+        .lang-content { display: none; }
+
+        @media (max-width: 768px) {
+            body { padding: 15px; }
+            .note-container { padding: 25px; }
+            .chapter-header h1 { font-size: 2.2rem; }
+            .nav-header { flex-direction: column-reverse; align-items: stretch; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="note-container">
+        <header class="nav-header">
+            <a href="index.html" class="back-link">
+                <span class="lang-content en">← Back to Index</span>
+                <span class="lang-content hi">← सूची पर वापस जाएं</span>
+                <span class="lang-content bn">← সূচিপত্রে ফিরে যান</span>
+            </a>
+            <div class="language-selector">
+                <button id="btn-en" class="lang-btn">English</button>
+                <button id="btn-hi" class="lang-btn">हिन्दी</button>
+                <button id="btn-bn" class="lang-btn">বাংলা</button>
+            </div>
+        </header>
+
+        <header class="chapter-header">
+            <h1>
+                <span class="lang-content en">Sound 🔊</span>
+                <span class="lang-content hi">ध्वनि 🔊</span>
+                <span class="lang-content bn">শব্দ 🔊</span>
+            </h1>
+            <div class="chapter-tag">
+                <span class="lang-content en">Chapter 11</span>
+                <span class="lang-content hi">अध्याय 11</span>
+                <span class="lang-content bn">অধ্যায় ১১</span>
+            </div>
+        </header>
+
+        <main>
+            <h2>
+                <span class="lang-content en">Production and Propagation of Sound</span>
+                <span class="lang-content hi">ध्वनि का उत्पादन और संचरण</span>
+                <span class="lang-content bn">শব্দের উৎপাদন এবং বিস্তার</span>
+            </h2>
+            <p>
+                <span class="lang-content en">Sound is a form of energy that is produced by vibrating objects. It travels from one place to another in the form of waves. Sound needs a medium (solid, liquid, or gas) to travel and cannot travel in a vacuum.</span>
+                <span class="lang-content hi">ध्वनि ऊर्जा का एक रूप है जो कंपन करने वाली वस्तुओं द्वारा उत्पन्न होती है। यह तरंगों के रूप में एक स्थान से दूसरे स्थान तक जाती है। ध्वनि को यात्रा करने के लिए एक माध्यम (ठोस, तरल, या गैस) की आवश्यकता होती है और यह निर्वात में यात्रा नहीं कर सकती।</span>
+                <span class="lang-content bn">শব্দ হলো এক প্রকার শক্তি যা কম্পনশীল বস্তু দ্বারা উৎপাদিত হয়। এটি তরঙ্গের আকারে এক স্থান থেকে অন্য স্থানে যায়। শব্দের বিস্তারের জন্য একটি মাধ্যম (কঠিন, তরল, বা গ্যাস) প্রয়োজন এবং এটি শূন্যস্থানে চলাচল করতে পারে না।</span>
+            </p>
+            <p>
+                <span class="lang-content en">Sound waves are longitudinal waves, consisting of areas of high pressure (<strong>compressions</strong>) and low pressure (<strong>rarefactions</strong>).</span>
+                <span class="lang-content hi">ध्वनि तरंगें अनुदैर्ध्य तरंगें होती हैं, जिनमें उच्च दाब वाले क्षेत्र (<strong>संपीड़न</strong>) और निम्न दाब वाले क्षेत्र (<strong>विरलन</strong>) होते हैं।</span>
+                <span class="lang-content bn">শব্দ তরঙ্গ হলো অনুদৈর্ঘ্য তরঙ্গ, যা উচ্চ চাপের অঞ্চল (<strong>সংকোচন</strong>) এবং নিম্ন চাপের অঞ্চল (<strong>তনুভবন</strong>) নিয়ে গঠিত।</span>
+            </p>
+
+            <h2>
+                <span class="lang-content en">Characteristics of a Sound Wave</span>
+                <span class="lang-content hi">ध्वनि तरंग की विशेषताएँ</span>
+                <span class="lang-content bn">শব্দ তরঙ্গের বৈশিষ্ট্য</span>
+            </h2>
+            <ul class="styled-list">
+                <li>
+                    <span class="lang-content en"><strong>Frequency:</strong> The number of oscillations per second. It determines the <strong>pitch</strong> of the sound. Its unit is hertz (Hz).</span>
+                    <span class="lang-content hi"><strong>आवृत्ति:</strong> प्रति सेकंड दोलनों की संख्या। यह ध्वनि के <strong>तारत्व</strong> को निर्धारित करती है। इसकी इकाई हर्ट्ज़ (Hz) है।</span>
+                    <span class="lang-content bn"><strong>কম্পাঙ্ক:</strong> প্রতি সেকেন্ডে কম্পনের সংখ্যা। এটি শব্দের <strong>তীক্ষ্ণতা</strong> নির্ধারণ করে। এর একক হার্জ (Hz)।</span>
+                </li>
+                 <li>
+                    <span class="lang-content en"><strong>Amplitude:</strong> The maximum displacement of the particles of the medium from their mean position. It determines the <strong>loudness</strong> of the sound.</span>
+                    <span class="lang-content hi"><strong>आयाम:</strong> माध्यम के कणों का उनकी माध्य स्थिति से अधिकतम विस्थापन। यह ध्वनि की <strong>प्रबलता</strong> को निर्धारित करता है।</span>
+                    <span class="lang-content bn"><strong>বিস্তার:</strong> মাধ্যমের কণাগুলির তাদের গড় অবস্থান থেকে সর্বাধিক সরণ। এটি শব্দের <strong>প্রাবল্য</strong> নির্ধারণ করে।</span>
+                </li>
+                 <li>
+                    <span class="lang-content en"><strong>Speed:</strong> The distance which a point on a wave, such as a compression, travels per unit time. Speed = Wavelength × Frequency.</span>
+                    <span class="lang-content hi"><strong>गति:</strong> वह दूरी जो एक तरंग पर एक बिंदु, जैसे कि एक संपीड़न, प्रति इकाई समय में तय करता है। गति = तरंग दैर्ध्य × आवृत्ति।</span>
+                    <span class="lang-content bn"><strong>গতি:</strong> তরঙ্গের একটি বিন্দু, যেমন সংকোচন, একক সময়ে যে দূরত্ব অতিক্রম করে। গতি = তরঙ্গদৈর্ঘ্য × কম্পাঙ্ক।</span>
+                </li>
+            </ul>
+
+            <div class="key-concept-box">
+                <p>
+                    <span class="lang-content en"><strong>Reflection of Sound:</strong> Like light, sound gets reflected at the surface of a solid or liquid. An <strong>echo</strong> is the sound heard after reflection. <strong>Reverberation</strong> is the persistence of sound due to repeated reflections.</span>
+                    <span class="lang-content hi"><strong>ध्वनि का परावर्तन:</strong> प्रकाश की तरह, ध्वनि किसी ठोस या तरल की सतह पर परावर्तित होती है। <strong>प्रतिध्वनि</strong> परावर्तन के बाद सुनी गई ध्वनि है। <strong>अनुरणन</strong> बार-बार परावर्तन के कारण ध्वनि का बना रहना है।</span>
+                    <span class="lang-content bn"><strong>শব্দের প্রতিফলন:</strong> আলোর মতো, শব্দও কঠিন বা তরলের পৃষ্ঠে প্রতিফলিত হয়। <strong>প্রতিধ্বনি</strong> হলো প্রতিফলনের পরে শোনা শব্দ। <strong>অনুরণন</strong> হলো বারবার প্রতিফলনের কারণে শব্দের স্থায়ীত্ব।</span>
+                </p>
+            </div>
+
+            <h2>
+                <span class="lang-content en">Range of Hearing</span>
+                <span class="lang-content hi">श्रवण की सीमा</span>
+                <span class="lang-content bn">শ্রবণের পরিসর</span>
+            </h2>
+            <ul class="styled-list">
+                 <li>
+                    <span class="lang-content en"><strong>Audible Range:</strong> The human ear can hear sounds with frequencies between 20 Hz and 20,000 Hz (20 kHz).</span>
+                    <span class="lang-content hi"><strong>श्रव्य सीमा:</strong> मानव कान 20 हर्ट्ज और 20,000 हर्ट्ज (20 kHz) के बीच की आवृत्तियों वाली ध्वनियाँ सुन सकता है।</span>
+                    <span class="lang-content bn"><strong>শ্রাব্য পরিসর:</strong> মানুষের কান 20 Hz থেকে 20,000 Hz (20 kHz) কম্পাঙ্কের শব্দ শুনতে পারে।</span>
+                </li>
+                <li>
+                    <span class="lang-content en"><strong>Infrasound:</strong> Sounds of frequencies below 20 Hz. Rhinoceroses and elephants can produce infrasound.</span>
+                    <span class="lang-content hi"><strong>अवश्रव्य:</strong> 20 हर्ट्ज से कम आवृत्तियों की ध्वनियाँ। गैंडे और हाथी अवश्रव्य ध्वनि उत्पन्न कर सकते हैं।</span>
+                    <span class="lang-content bn"><strong>শব্দেতর:</strong> 20 Hz-এর কম কম্পাঙ্কের শব্দ। গন্ডার এবং হাতি শব্দেতর শব্দ তৈরি করতে পারে।</span>
+                </li>
+                <li>
+                    <span class="lang-content en"><strong>Ultrasound:</strong> Sounds of frequencies above 20 kHz. Bats and dolphins produce ultrasound. It is used in medical imaging and SONAR.</span>
+                    <span class="lang-content hi"><strong>पराश्रव्य:</strong> 20 kHz से अधिक आवृत्तियों की ध्वनियाँ। चमगादड़ और डॉल्फ़िन पराश्रव्य ध्वनि उत्पन्न करते हैं। इसका उपयोग मेडिकल इमेजिंग और सोनार में किया जाता है।</span>
+                    <span class="lang-content bn"><strong>শব্দোত্তর তরঙ্গ:</strong> 20 kHz-এর বেশি কম্পাঙ্কের শব্দ। বাদুড় এবং ডলফিন শব্দোত্তর তরঙ্গ তৈরি করে। এটি চিকিৎসা চিত্রগ্রহণ এবং সোনার-এ ব্যবহৃত হয়।</span>
+                </li>
+            </ul>
+
+        </main>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const langContents = document.querySelectorAll('.lang-content');
+
+        function switchLanguage(lang) {
+            localStorage.setItem('userLanguage', lang);
+
+            langButtons.forEach(button => {
+                button.classList.remove('active');
+                if (button.id === `btn-${lang}`) {
+                    button.classList.add('active');
+                }
+            });
+
+            langContents.forEach(content => {
+                content.style.display = 'none';
+            });
+
+            const activeContents = document.querySelectorAll(`.${lang}`);
+            activeContents.forEach(content => {
+                content.style.display = 'inline';
+            });
+        }
+
+        langButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const lang = button.id.split('-')[1];
+                switchLanguage(lang);
+            });
+        });
+
+        const savedLang = localStorage.getItem('userLanguage');
+        if (savedLang) {
+            switchLanguage(savedLang);
+        } else {
+            switchLanguage('en');
+        }
+    });
+</script>
+
+</body>
+</html>

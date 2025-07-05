@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 4: Structure of the Atom</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap');
+
+        :root {
+            --bg-color: #e3f2fd; /* Light sky blue */
+            --card-bg: #ffffff;
+            --text-color: #37474f;
+            --header-color: #0d47a1; /* Deep blue */
+            --accent-color: #ffc107; /* Amber yellow */
+            --accent-light: #fffbe6; /* Light yellow for boxes */
+            --card-shadow: rgba(0, 0, 0, 0.1);
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'Nunito', sans-serif;
+            color: var(--text-color);
+            margin: 0;
+            padding: 30px;
+            line-height: 1.7;
+        }
+
+        .note-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            border-radius: 24px;
+            padding: 30px 40px;
+            box-shadow: 0 8px 0 0 #bdbdbd, 0 8px 15px 0 var(--card-shadow);
+        }
+        
+        .nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .back-link {
+            display: inline-block;
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 800;
+            box-shadow: 0 4px 0 0 #d1d1d1;
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
+        }
+
+        .back-link:hover {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 0 #d1d1d1;
+        }
+
+        .language-selector {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            padding: 10px 20px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            border: none;
+            border-radius: 16px;
+            background-color: #e9e9e9;
+            color: #555;
+            cursor: pointer;
+            box-shadow: 0 4px 0 0 #c9c9c9;
+            transition: all 0.1s ease;
+        }
+
+        .lang-btn:hover { background-color: #dfdfdf; }
+
+        .lang-btn.active {
+            background-color: var(--accent-color);
+            color: #333;
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 0 #c79100;
+        }
+        
+        .chapter-header { text-align: center; border-bottom: 2px solid var(--border-color); padding-bottom: 30px; margin-bottom: 40px; }
+        .chapter-header h1 { font-size: 2.8rem; font-weight: 800; color: var(--header-color); margin: 0; }
+        .chapter-tag { display: inline-block; background-color: var(--accent-color); color: #333; font-weight: 800; padding: 6px 16px; border-radius: 16px; margin-top: 15px; font-size: 1rem; }
+        
+        main h2 { font-size: 2rem; font-weight: 800; color: var(--header-color); margin-top: 40px; margin-bottom: 20px; }
+        main h3 { font-size: 1.5rem; font-weight: 700; color: #1976d2; margin-top: 30px; margin-bottom: 15px; }
+        p, li { font-size: 1.1rem; color: var(--text-color); }
+        strong { font-weight: 700; color: #263238; }
+
+        .key-concept-box { background-color: var(--accent-light); border-left: 6px solid var(--accent-color); border-radius: 8px; padding: 20px; margin: 30px 0; }
+        .key-concept-box p { margin: 0; font-size: 1.1rem; font-weight: 700; }
+
+        .styled-list { list-style: none; padding-left: 0; }
+        .styled-list li { padding-left: 35px; position: relative; margin-bottom: 10px; }
+        .styled-list li::before { content: '⚛️'; position: absolute; left: 0; top: 4px; font-size: 1.2rem; }
+
+        .lang-content { display: none; }
+
+        @media (max-width: 768px) {
+            body { padding: 15px; }
+            .note-container { padding: 25px; }
+            .chapter-header h1 { font-size: 2.2rem; }
+            .nav-header { flex-direction: column-reverse; align-items: stretch; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="note-container">
+        <header class="nav-header">
+            <a href="index.html" class="back-link">
+                <span class="lang-content en">← Back to Index</span>
+                <span class="lang-content hi">← सूची पर वापस जाएं</span>
+                <span class="lang-content bn">← সূচিপত্রে ফিরে যান</span>
+            </a>
+            <div class="language-selector">
+                <button id="btn-en" class="lang-btn">English</button>
+                <button id="btn-hi" class="lang-btn">हिन्दी</button>
+                <button id="btn-bn" class="lang-btn">বাংলা</button>
+            </div>
+        </header>
+
+        <header class="chapter-header">
+            <h1>
+                <span class="lang-content en">Structure of the Atom ⚛️</span>
+                <span class="lang-content hi">परमाणु की संरचना ⚛️</span>
+                <span class="lang-content bn">পরমাণুর গঠন ⚛️</span>
+            </h1>
+            <div class="chapter-tag">
+                <span class="lang-content en">Chapter 4</span>
+                <span class="lang-content hi">अध्याय 4</span>
+                <span class="lang-content bn">অধ্যায় ৪</span>
+            </div>
+        </header>
+
+        <main>
+            <h2>
+                <span class="lang-content en">Subatomic Particles</span>
+                <span class="lang-content hi">अपरमाण्विक कण</span>
+                <span class="lang-content bn">অবপারমাণবিক কণা</span>
+            </h2>
+            <p>
+                <span class="lang-content en">Dalton's theory suggested atoms were indivisible, but the discovery of subatomic particles proved otherwise. The three main subatomic particles are:</span>
+                <span class="lang-content hi">डाल्टन के सिद्धांत ने सुझाव दिया कि परमाणु अविभाज्य थे, लेकिन अपरमाण्विक कणों की खोज ने अन्यथा साबित कर दिया। तीन मुख्य अपरमाण्विक कण हैं:</span>
+                <span class="lang-content bn">ডাল্টনের তত্ত্ব অনুযায়ী পরমাণু অবিভাজ্য ছিল, কিন্তু অবপারমাণবিক কণার আবিষ্কার অন্যকিছু প্রমাণ করেছে। তিনটি প্রধান অবপারমাণবিক কণা হল:</span>
+            </p>
+            <ul class="styled-list">
+                <li>
+                    <span class="lang-content en"><strong>Proton (p⁺):</strong> Positively charged particle found in the nucleus.</span>
+                    <span class="lang-content hi"><strong>प्रोटॉन (p⁺):</strong> नाभिक में पाया जाने वाला धनावेशित कण।</span>
+                    <span class="lang-content bn"><strong>প্রোটন (p⁺):</strong> নিউক্লিয়াসে পাওয়া ধনাত্মক চার্জযুক্ত কণা।</span>
+                </li>
+                <li>
+                    <span class="lang-content en"><strong>Neutron (n⁰):</strong> Neutral particle (no charge) found in the nucleus.</span>
+                    <span class="lang-content hi"><strong>न्यूट्रॉन (n⁰):</strong> नाभिक में पाया जाने वाला उदासीन (कोई चार्ज नहीं) कण।</span>
+                    <span class="lang-content bn"><strong>নিউট্রন (n⁰):</strong> নিউক্লিয়াসে পাওয়া নিরপেক্ষ (কোনো চার্জ নেই) কণা।</span>
+                </li>
+                 <li>
+                    <span class="lang-content en"><strong>Electron (e⁻):</strong> Negatively charged particle that orbits the nucleus.</span>
+                    <span class="lang-content hi"><strong>इलेक्ट्रॉन (e⁻):</strong> ऋणावेशित कण जो नाभिक की परिक्रमा करता है।</span>
+                    <span class="lang-content bn"><strong>ইলেকট্রন (e⁻):</strong> ঋণাত্মক চার্জযুক্ত কণা যা নিউক্লিয়াসকে প্রদক্ষিণ করে।</span>
+                </li>
+            </ul>
+
+            <div class="key-concept-box">
+                <p>
+                    <span class="lang-content en">The nucleus contains protons and neutrons, and it holds almost all the mass of an atom. Electrons revolve around the nucleus in discrete orbits.</span>
+                    <span class="lang-content hi">नाभिक में प्रोटॉन और न्यूट्रॉन होते हैं, और इसमें एक परमाणु का लगभग सारा द्रव्यमान होता है। इलेक्ट्रॉन नाभिक के चारों ओर अलग-अलग कक्षाओं में घूमते हैं।</span>
+                    <span class="lang-content bn">নিউক্লিয়াসে প্রোটন এবং নিউট্রন থাকে এবং এটি একটি পরমাণুর প্রায় সমস্ত ভর ধারণ করে। ইলেকট্রন নিউক্লিয়াসের চারপাশে নির্দিষ্ট কক্ষপথে ঘোরে।</span>
+                </p>
+            </div>
+
+            <h2>
+                <span class="lang-content en">Atomic Models</span>
+                <span class="lang-content hi">परमाणु मॉडल</span>
+                <span class="lang-content bn">পারমাণবিক মডেল</span>
+            </h2>
+            <p>
+                <span class="lang-content en">Several scientists proposed models to explain the structure of an atom.</span>
+                <span class="lang-content hi">कई वैज्ञानिकों ने परमाणु की संरचना की व्याख्या करने के लिए मॉडल प्रस्तावित किए।</span>
+                <span class="lang-content bn">বেশ কয়েকজন বিজ্ঞানী পরমাণুর গঠন ব্যাখ্যা করার জন্য মডেল প্রস্তাব করেছিলেন।</span>
+            </p>
+            <h3>
+                <span class="lang-content en">Thomson's Model (Plum Pudding)</span>
+                <span class="lang-content hi">थॉमसन का मॉडल (प्लम पुडिंग)</span>
+                <span class="lang-content bn">থমসনের মডেল (প্লাম পুডিং)</span>
+            </h3>
+            <p>
+                <span class="lang-content en">J.J. Thomson proposed that an atom is a sphere of positive charge with negatively charged electrons embedded in it, like plums in a pudding.</span>
+                <span class="lang-content hi">जे.जे. थॉमसन ने प्रस्तावित किया कि एक परमाणु एक धनात्मक आवेश का गोला है जिसमें ऋणावेशित इलेक्ट्रॉन धंसे होते हैं, जैसे पुडिंग में प्लम।</span>
+                <span class="lang-content bn">জে.জে. থমসন প্রস্তাব করেছিলেন যে একটি পরমাণু হলো একটি ধনাত্মক চার্জযুক্ত গোলক যার মধ্যে ঋণাত্মক চার্জযুক্ত ইলেকট্রন এমবেড করা থাকে, যেমন পুডিংয়ে কিশমিশ।</span>
+            </p>
+            <h3>
+                <span class="lang-content en">Rutherford's Model (Nuclear Model)</span>
+                <span class="lang-content hi">रदरफोर्ड का मॉडल (नाभिकीय मॉडल)</span>
+                <span class="lang-content bn">রাদারফোর্ডের মডেল (নিউক্লিয়ার মডেল)</span>
+            </h3>
+            <p>
+                <span class="lang-content en">Based on his gold foil experiment, Rutherford concluded that an atom has a small, dense, positively charged nucleus at the center, with electrons revolving around it.</span>
+                <span class="lang-content hi">अपने सोने की पन्नी के प्रयोग के आधार पर, रदरफोर्ड ने निष्कर्ष निकाला कि एक परमाणु के केंद्र में एक छोटा, सघन, धनावेशित नाभिक होता है, जिसके चारों ओर इलेक्ट्रॉन घूमते हैं।</span>
+                <span class="lang-content bn">তার সোনার পাত পরীক্ষার উপর ভিত্তি করে, রাদারফোর্ড এই সিদ্ধান্তে উপনীত হন যে একটি পরমাণুর কেন্দ্রে একটি ছোট, ঘন, ধনাত্মক চার্জযুক্ত নিউক্লিয়াস রয়েছে এবং ইলেকট্রনগুলি তার চারপাশে ঘোরে।</span>
+            </p>
+            
+            <h2>
+                <span class="lang-content en">Atomic Number and Mass Number</span>
+                <span class="lang-content hi">परमाणु संख्या और द्रव्यमान संख्या</span>
+                <span class="lang-content bn">পারমাণবিক সংখ্যা এবং ভর সংখ্যা</span>
+            </h2>
+             <ul class="styled-list">
+                <li>
+                    <span class="lang-content en"><strong>Atomic Number (Z):</strong> The number of protons in the nucleus of an atom. It defines the element.</span>
+                    <span class="lang-content hi"><strong>परमाणु संख्या (Z):</strong> किसी परमाणु के नाभिक में प्रोटॉनों की संख्या। यह तत्व को परिभाषित करता है।</span>
+                    <span class="lang-content bn"><strong>পারমাণবিক সংখ্যা (Z):</strong> একটি পরমাণুর নিউক্লিয়াসে প্রোটনের সংখ্যা। এটি মৌলকে নির্ধারণ করে।</span>
+                </li>
+                <li>
+                    <span class="lang-content en"><strong>Mass Number (A):</strong> The total number of protons and neutrons in the nucleus.</span>
+                    <span class="lang-content hi"><strong>द्रव्यमान संख्या (A):</strong> नाभिक में प्रोटॉन और न्यूट्रॉन की कुल संख्या।</span>
+                    <span class="lang-content bn"><strong>ভর সংখ্যা (A):</strong> নিউক্লিয়াসে প্রোটন এবং নিউট্রনের মোট সংখ্যা।</span>
+                </li>
+            </ul>
+            
+            <h2>
+                <span class="lang-content en">Isotopes and Isobars</span>
+                <span class="lang-content hi">समस्थानिक और समभारिक</span>
+                <span class="lang-content bn">আইসোটোপ এবং আইসোবার</span>
+            </h2>
+             <ul class="styled-list">
+                <li>
+                    <span class="lang-content en"><strong>Isotopes:</strong> Atoms of the same element with the same atomic number but different mass numbers (i.e., different number of neutrons). E.g., ¹²C and ¹⁴C.</span>
+                    <span class="lang-content hi"><strong>समस्थानिक:</strong> एक ही तत्व के परमाणु जिनकी परमाणु संख्या समान होती है लेकिन द्रव्यमान संख्या भिन्न होती है (अर्थात, न्यूट्रॉन की संख्या भिन्न होती है)। जैसे, ¹²C और ¹⁴C।</span>
+                    <span class="lang-content bn"><strong>আইসোটোপ:</strong> একই মৌলের পরমাণু যাদের পারমাণবিক সংখ্যা একই কিন্তু ভর সংখ্যা ভিন্ন (অর্থাৎ, নিউট্রনের সংখ্যা ভিন্ন)। যেমন, ¹²C এবং ¹⁴C।</span>
+                </li>
+                <li>
+                    <span class="lang-content en"><strong>Isobars:</strong> Atoms of different elements with different atomic numbers but the same mass number.</span>
+                    <span class="lang-content hi"><strong>समभारिक:</strong> विभिन्न तत्वों के परमाणु जिनकी परमाणु संख्या भिन्न होती है लेकिन द्रव्यमान संख्या समान होती है।</span>
+                    <span class="lang-content bn"><strong>আইসোবার:</strong> ভিন্ন মৌলের পরমাণু যাদের পারমাণবিক সংখ্যা ভিন্ন কিন্তু ভর সংখ্যা একই।</span>
+                </li>
+            </ul>
+
+        </main>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const langContents = document.querySelectorAll('.lang-content');
+
+        function switchLanguage(lang) {
+            localStorage.setItem('userLanguage', lang);
+
+            langButtons.forEach(button => {
+                button.classList.remove('active');
+                if (button.id === `btn-${lang}`) {
+                    button.classList.add('active');
+                }
+            });
+
+            langContents.forEach(content => {
+                content.style.display = 'none';
+            });
+
+            const activeContents = document.querySelectorAll(`.${lang}`);
+            activeContents.forEach(content => {
+                content.style.display = 'inline';
+            });
+        }
+
+        langButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const lang = button.id.split('-')[1];
+                switchLanguage(lang);
+            });
+        });
+
+        const savedLang = localStorage.getItem('userLanguage');
+        if (savedLang) {
+            switchLanguage(savedLang);
+        } else {
+            switchLanguage('en');
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 5: The Fundamental Unit of Life</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap');
+
+        :root {
+            --bg-color: #e3f2fd; /* Light sky blue */
+            --card-bg: #ffffff;
+            --text-color: #37474f;
+            --header-color: #0d47a1; /* Deep blue */
+            --accent-color: #ffc107; /* Amber yellow */
+            --accent-light: #fffbe6; /* Light yellow for boxes */
+            --card-shadow: rgba(0, 0, 0, 0.1);
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'Nunito', sans-serif;
+            color: var(--text-color);
+            margin: 0;
+            padding: 30px;
+            line-height: 1.7;
+        }
+
+        .note-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            border-radius: 24px;
+            padding: 30px 40px;
+            box-shadow: 0 8px 0 0 #bdbdbd, 0 8px 15px 0 var(--card-shadow);
+        }
+        
+        .nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .back-link {
+            display: inline-block;
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 800;
+            box-shadow: 0 4px 0 0 #d1d1d1;
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
+        }
+
+        .back-link:hover {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 0 #d1d1d1;
+        }
+
+        .language-selector {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            padding: 10px 20px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            border: none;
+            border-radius: 16px;
+            background-color: #e9e9e9;
+            color: #555;
+            cursor: pointer;
+            box-shadow: 0 4px 0 0 #c9c9c9;
+            transition: all 0.1s ease;
+        }
+
+        .lang-btn:hover { background-color: #dfdfdf; }
+
+        .lang-btn.active {
+            background-color: var(--accent-color);
+            color: #333;
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 0 #c79100;
+        }
+        
+        .chapter-header { text-align: center; border-bottom: 2px solid var(--border-color); padding-bottom: 30px; margin-bottom: 40px; }
+        .chapter-header h1 { font-size: 2.8rem; font-weight: 800; color: var(--header-color); margin: 0; }
+        .chapter-tag { display: inline-block; background-color: var(--accent-color); color: #333; font-weight: 800; padding: 6px 16px; border-radius: 16px; margin-top: 15px; font-size: 1rem; }
+        
+        main h2 { font-size: 2rem; font-weight: 800; color: var(--header-color); margin-top: 40px; margin-bottom: 20px; }
+        main h3 { font-size: 1.5rem; font-weight: 700; color: #1976d2; margin-top: 30px; margin-bottom: 15px; }
+        p, li { font-size: 1.1rem; color: var(--text-color); }
+        strong { font-weight: 700; color: #263238; }
+
+        .key-concept-box { background-color: var(--accent-light); border-left: 6px solid var(--accent-color); border-radius: 8px; padding: 20px; margin: 30px 0; }
+        .key-concept-box p { margin: 0; font-size: 1.1rem; font-weight: 700; }
+
+        .styled-list { list-style: none; padding-left: 0; }
+        .styled-list li { padding-left: 35px; position: relative; margin-bottom: 10px; }
+        .styled-list li::before { content: '🔬'; position: absolute; left: 0; top: 4px; font-size: 1.2rem; }
+
+        .lang-content { display: none; }
+
+        @media (max-width: 768px) {
+            body { padding: 15px; }
+            .note-container { padding: 25px; }
+            .chapter-header h1 { font-size: 2.2rem; }
+            .nav-header { flex-direction: column-reverse; align-items: stretch; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="note-container">
+        <header class="nav-header">
+            <a href="index.html" class="back-link">
+                <span class="lang-content en">← Back to Index</span>
+                <span class="lang-content hi">← सूची पर वापस जाएं</span>
+                <span class="lang-content bn">← সূচিপত্রে ফিরে যান</span>
+            </a>
+            <div class="language-selector">
+                <button id="btn-en" class="lang-btn">English</button>
+                <button id="btn-hi" class="lang-btn">हिन्दी</button>
+                <button id="btn-bn" class="lang-btn">বাংলা</button>
+            </div>
+        </header>
+
+        <header class="chapter-header">
+            <h1>
+                <span class="lang-content en">The Fundamental Unit of Life 🔬</span>
+                <span class="lang-content hi">जीवन की मौलिक इकाई 🔬</span>
+                <span class="lang-content bn">জীবনের মৌলিক একক 🔬</span>
+            </h1>
+            <div class="chapter-tag">
+                <span class="lang-content en">Chapter 5</span>
+                <span class="lang-content hi">अध्याय 5</span>
+                <span class="lang-content bn">অধ্যায় ৫</span>
+            </div>
+        </header>
+
+        <main>
+            <h2>
+                <span class="lang-content en">What is a Cell?</span>
+                <span class="lang-content hi">कोशिका क्या है?</span>
+                <span class="lang-content bn">কোষ কী?</span>
+            </h2>
+            <p>
+                <span class="lang-content en">The cell is the basic structural and functional unit of all known organisms. All living things are made up of one or more cells. Cells were first discovered by Robert Hooke in 1665.</span>
+                <span class="lang-content hi">कोशिका सभी ज्ञात जीवों की मूल संरचनात्मक और कार्यात्मक इकाई है। सभी जीवित प्राणी एक या एक से अधिक कोशिकाओं से बने होते हैं। कोशिकाओं की खोज सबसे पहले 1665 में रॉबर्ट हुक ने की थी।</span>
+                <span class="lang-content bn">কোষ হলো সকল পরিচিত জীবের মৌলিক গঠনগত এবং कार्यात्मक একক। সমস্ত জীবন্ত বস্তু এক বা একাধিক কোষ দ্বারা গঠিত। কোষ প্রথম আবিষ্কার করেন রবার্ট হুক ১৬৬৫ সালে।</span>
+            </p>
+
+            <div class="key-concept-box">
+                <p>
+                    <span class="lang-content en">Cell Theory states that: 1. All living organisms are composed of cells. 2. The cell is the basic unit of life. 3. All cells arise from pre-existing cells.</span>
+                    <span class="lang-content hi">कोशिका सिद्धांत कहता है कि: 1. सभी जीवित जीव कोशिकाओं से बने होते हैं। 2. कोशिका जीवन की मूल इकाई है। 3. सभी कोशिकाएँ पहले से मौजूद कोशिकाओं से उत्पन्न होती हैं।</span>
+                    <span class="lang-content bn">কোষ তত্ত্ব অনুযায়ী: ১. সমস্ত জীব কোষ দ্বারা গঠিত। ২. কোষ হলো জীবনের মৌলিক একক। ৩. সমস্ত কোষ পূর্ব-বিদ্যমান কোষ থেকে সৃষ্টি হয়।</span>
+                </p>
+            </div>
+
+            <h2>
+                <span class="lang-content en">What is a Cell Made Of?</span>
+                <span class="lang-content hi">कोशिका किससे बनी होती है?</span>
+                <span class="lang-content bn">কোষ কী দিয়ে তৈরি?</span>
+            </h2>
+            <p>
+                <span class="lang-content en">A cell is typically composed of three main parts:</span>
+                <span class="lang-content hi">एक कोशिका आमतौर पर तीन मुख्य भागों से बनी होती है:</span>
+                <span class="lang-content bn">একটি কোষ সাধারণত তিনটি প্রধান অংশ নিয়ে গঠিত:</span>
+            </p>
+            <ul class="styled-list">
+                <li>
+                    <span class="lang-content en"><strong>Plasma Membrane:</strong> The outer covering of the cell that separates the cell's contents from its external environment. It is selectively permeable.</span>
+                    <span class="lang-content hi"><strong>प्लाज्मा झिल्ली:</strong> कोशिका का बाहरी आवरण जो कोशिका की सामग्री को उसके बाहरी वातावरण से अलग करता है। यह चयनात्मक रूप से पारगम्य होती है।</span>
+                    <span class="lang-content bn"><strong>প্লাজমা পর্দা:</strong> কোষের বাইরের আবরণ যা কোষের বিষয়বস্তুকে তার বাহ্যিক পরিবেশ থেকে পৃথক করে। এটি নির্বাচিতভাবে ভেদ্য।</span>
+                </li>
+                <li>
+                    <span class="lang-content en"><strong>Nucleus:</strong> A large, centrally located spherical structure that contains the genetic material (DNA) and controls the cell's activities.</span>
+                    <span class="lang-content hi"><strong>केंद्रक:</strong> एक बड़ी, केंद्र में स्थित गोलाकार संरचना जिसमें आनुवंशिक सामग्री (डीएनए) होती है और यह कोशिका की गतिविधियों को नियंत्रित करती है।</span>
+                    <span class="lang-content bn"><strong>নিউক্লিয়াস:</strong> একটি বড়, কেন্দ্রে অবস্থিত গোলাকার গঠন যা জেনেটিক উপাদান (ডিএনএ) ধারণ করে এবং কোষের কার্যকলাপ নিয়ন্ত্রণ করে।</span>
+                </li>
+                 <li>
+                    <span class="lang-content en"><strong>Cytoplasm:</strong> The jelly-like substance filling the cell, enclosed by the cell membrane. It contains various cell organelles.</span>
+                    <span class="lang-content hi"><strong>कोशिकाद्रव्य:</strong> कोशिका को भरने वाला जेली जैसा पदार्थ, जो कोशिका झिल्ली से घिरा होता है। इसमें विभिन्न कोशिकांग होते हैं।</span>
+                    <span class="lang-content bn"><strong>সাইটোপ্লাজম:</strong> কোষের ভেতরে থাকা জেলি-সদৃশ পদার্থ, যা কোষ পর্দা দ্বারা আবদ্ধ থাকে। এতে বিভিন্ন কোষ অঙ্গাণু থাকে।</span>
+                </li>
+            </ul>
+            
+            <h2>
+                <span class="lang-content en">Cell Organelles</span>
+                <span class="lang-content hi">कोशिकांग</span>
+                <span class="lang-content bn">কোষ অঙ্গাণু</span>
+            </h2>
+            <p>
+                <span class="lang-content en">These are specialized structures within the cytoplasm that perform specific functions.</span>
+                <span class="lang-content hi">ये कोशिकाद्रव्य के भीतर विशेष संरचनाएं हैं जो विशिष्ट कार्य करती हैं।</span>
+                <span class="lang-content bn">এগুলি সাইটোপ্লাজমের মধ্যে বিশেষ গঠন যা নির্দিষ্ট কাজ সম্পাদন করে।</span>
+            </p>
+             <ul class="styled-list">
+                <li>
+                    <span class="lang-content en"><strong>Endoplasmic Reticulum (ER):</strong> A network of membranes involved in protein and lipid synthesis.</span>
+                    <span class="lang-content hi"><strong>अंतर्द्रव्यी जालिका (ER):</strong> झिल्लियों का एक नेटवर्क जो प्रोटीन और लिपिड संश्लेषण में शामिल होता है।</span>
+                    <span class="lang-content bn"><strong>এন্ডোপ্লাজমিক রেটিকুলাম (ER):</strong> প্রোটিন এবং লিপিড সংশ্লেষণে জড়িত ঝিল্লির একটি নেটওয়ার্ক।</span>
+                </li>
+                <li>
+                    <span class="lang-content en"><strong>Golgi Apparatus:</strong> Modifies, sorts, and packages materials from the ER for storage or transport.</span>
+                    <span class="lang-content hi"><strong>गॉल्जी उपकरण:</strong> ER से सामग्री को भंडारण या परिवहन के लिए संशोधित, छांटता और पैकेज करता है।</span>
+                    <span class="lang-content bn"><strong>গলগি বস্তু:</strong> ER থেকে আসা পদার্থ পরিবর্তন, বাছাই এবং প্যাকেজ করে সঞ্চয় বা পরিবহনের জন্য।</span>
+                </li>
+                 <li>
+                    <span class="lang-content en"><strong>Mitochondria:</strong> Known as the "powerhouses" of the cell, they generate most of the cell's supply of ATP (energy).</span>
+                    <span class="lang-content hi"><strong>माइटोकॉन्ड्रिया:</strong> कोशिका के "पावरहाउस" के रूप में जाना जाता है, वे कोशिका की एटीपी (ऊर्जा) की अधिकांश आपूर्ति उत्पन्न करते हैं।</span>
+                    <span class="lang-content bn"><strong>মাইটোকনড্রিয়া:</strong> কোষের "শক্তিঘর" হিসাবে পরিচিত, এগুলি কোষের বেশিরভাগ এটিপি (শক্তি) সরবরাহ করে।</span>
+                </li>
+                 <li>
+                    <span class="lang-content en"><strong>Plastids:</strong> Found in plant cells, includes chloroplasts which are the site of photosynthesis.</span>
+                    <span class="lang-content hi"><strong>प्लास्टिड:</strong> पादप कोशिकाओं में पाए जाते हैं, इसमें क्लोरोप्लास्ट शामिल हैं जो प्रकाश संश्लेषण का स्थल हैं।</span>
+                    <span class="lang-content bn"><strong>প্লাস্টিড:</strong> উদ্ভিদ কোষে পাওয়া যায়, এর মধ্যে ক্লোরোপ্লাস্ট অন্তর্ভুক্ত যা সালোকসংশ্লেষের স্থান।</span>
+                </li>
+            </ul>
+
+        </main>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const langContents = document.querySelectorAll('.lang-content');
+
+        function switchLanguage(lang) {
+            localStorage.setItem('userLanguage', lang);
+
+            langButtons.forEach(button => {
+                button.classList.remove('active');
+                if (button.id === `btn-${lang}`) {
+                    button.classList.add('active');
+                }
+            });
+
+            langContents.forEach(content => {
+                content.style.display = 'none';
+            });
+
+            const activeContents = document.querySelectorAll(`.${lang}`);
+            activeContents.forEach(content => {
+                content.style.display = 'inline';
+            });
+        }
+
+        langButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const lang = button.id.split('-')[1];
+                switchLanguage(lang);
+            });
+        });
+
+        const savedLang = localStorage.getItem('userLanguage');
+        if (savedLang) {
+            switchLanguage(savedLang);
+        } else {
+            switchLanguage('en');
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 10: Work and Energy</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap');
+
+        :root {
+            --bg-color: #e3f2fd; /* Light sky blue */
+            --card-bg: #ffffff;
+            --text-color: #37474f;
+            --header-color: #0d47a1; /* Deep blue */
+            --accent-color: #ffc107; /* Amber yellow */
+            --accent-light: #fffbe6; /* Light yellow for boxes */
+            --card-shadow: rgba(0, 0, 0, 0.1);
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'Nunito', sans-serif;
+            color: var(--text-color);
+            margin: 0;
+            padding: 30px;
+            line-height: 1.7;
+        }
+
+        .note-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            border-radius: 24px;
+            padding: 30px 40px;
+            box-shadow: 0 8px 0 0 #bdbdbd, 0 8px 15px 0 var(--card-shadow);
+        }
+        
+        .nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .back-link {
+            display: inline-block;
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 800;
+            box-shadow: 0 4px 0 0 #d1d1d1;
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
+        }
+
+        .back-link:hover {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 0 #d1d1d1;
+        }
+
+        .language-selector {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            padding: 10px 20px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            border: none;
+            border-radius: 16px;
+            background-color: #e9e9e9;
+            color: #555;
+            cursor: pointer;
+            box-shadow: 0 4px 0 0 #c9c9c9;
+            transition: all 0.1s ease;
+        }
+
+        .lang-btn:hover { background-color: #dfdfdf; }
+
+        .lang-btn.active {
+            background-color: var(--accent-color);
+            color: #333;
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 0 #c79100;
+        }
+        
+        .chapter-header { text-align: center; border-bottom: 2px solid var(--border-color); padding-bottom: 30px; margin-bottom: 40px; }
+        .chapter-header h1 { font-size: 2.8rem; font-weight: 800; color: var(--header-color); margin: 0; }
+        .chapter-tag { display: inline-block; background-color: var(--accent-color); color: #333; font-weight: 800; padding: 6px 16px; border-radius: 16px; margin-top: 15px; font-size: 1rem; }
+        
+        main h2 { font-size: 2rem; font-weight: 800; color: var(--header-color); margin-top: 40px; margin-bottom: 20px; }
+        main h3 { font-size: 1.5rem; font-weight: 700; color: #1976d2; margin-top: 30px; margin-bottom: 15px; }
+        p, li { font-size: 1.1rem; color: var(--text-color); }
+        strong { font-weight: 700; color: #263238; }
+
+        .key-concept-box { background-color: var(--accent-light); border-left: 6px solid var(--accent-color); border-radius: 8px; padding: 20px; margin: 30px 0; }
+        .key-concept-box p { margin: 0; font-size: 1.1rem; font-weight: 700; }
+
+        .styled-list { list-style: none; padding-left: 0; }
+        .styled-list li { padding-left: 35px; position: relative; margin-bottom: 10px; }
+        .styled-list li::before { content: '⚡️'; position: absolute; left: 0; top: 4px; font-size: 1.2rem; }
+
+        .lang-content { display: none; }
+
+        @media (max-width: 768px) {
+            body { padding: 15px; }
+            .note-container { padding: 25px; }
+            .chapter-header h1 { font-size: 2.2rem; }
+            .nav-header { flex-direction: column-reverse; align-items: stretch; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="note-container">
+        <header class="nav-header">
+            <a href="index.html" class="back-link">
+                <span class="lang-content en">← Back to Index</span>
+                <span class="lang-content hi">← सूची पर वापस जाएं</span>
+                <span class="lang-content bn">← সূচিপত্রে ফিরে যান</span>
+            </a>
+            <div class="language-selector">
+                <button id="btn-en" class="lang-btn">English</button>
+                <button id="btn-hi" class="lang-btn">हिन्दी</button>
+                <button id="btn-bn" class="lang-btn">বাংলা</button>
+            </div>
+        </header>
+
+        <header class="chapter-header">
+            <h1>
+                <span class="lang-content en">Work and Energy ⚡️</span>
+                <span class="lang-content hi">कार्य तथा ऊर्जा ⚡️</span>
+                <span class="lang-content bn">কার্য এবং শক্তি ⚡️</span>
+            </h1>
+            <div class="chapter-tag">
+                <span class="lang-content en">Chapter 10</span>
+                <span class="lang-content hi">अध्याय 10</span>
+                <span class="lang-content bn">অধ্যায় ১০</span>
+            </div>
+        </header>
+
+        <main>
+            <h2>
+                <span class="lang-content en">Work</span>
+                <span class="lang-content hi">कार्य</span>
+                <span class="lang-content bn">কার্য</span>
+            </h2>
+            <p>
+                <span class="lang-content en">In science, work is done when a force applied to an object causes a displacement of the object. Two conditions must be satisfied for work to be done: (1) a force should act on the object, and (2) the object must be displaced.</span>
+                <span class="lang-content hi">विज्ञान में, कार्य तब किया जाता है जब किसी वस्तु पर लगाया गया बल वस्तु का विस्थापन करता है। कार्य किए जाने के लिए दो शर्तें पूरी होनी चाहिए: (1) वस्तु पर एक बल लगना चाहिए, और (2) वस्तु का विस्थापन होना चाहिए।</span>
+                <span class="lang-content bn">বিজ্ঞানে, কাজ করা হয় যখন কোনো বস্তুর উপর প্রযুক্ত বল বস্তুটির সরণ ঘটায়। কাজ হওয়ার জন্য দুটি শর্ত অবশ্যই পূরণ করতে হবে: (১) বস্তুর উপর একটি বল প্রযুক্ত হতে হবে, এবং (২) বস্তুটির অবশ্যই সরণ হতে হবে।</span>
+            </p>
+            <p>
+                <span class="lang-content en">Work done = Force × Displacement (<strong>W = F × s</strong>). The SI unit of work is the joule (J).</span>
+                <span class="lang-content hi">किया गया कार्य = बल × विस्थापन (<strong>W = F × s</strong>)। कार्य का SI मात्रक जूल (J) है।</span>
+                <span class="lang-content bn">কৃতকার্য = বল × সরণ (<strong>W = F × s</strong>)। কার্যের SI একক হলো জুল (J)।</span>
+            </p>
+
+            <h2>
+                <span class="lang-content en">Energy</span>
+                <span class="lang-content hi">ऊर्जा</span>
+                <span class="lang-content bn">শক্তি</span>
+            </h2>
+            <p>
+                <span class="lang-content en">Energy is defined as the capacity to do work. An object that possesses energy can exert a force on another object to do work. The SI unit of energy is also the joule (J).</span>
+                <span class="lang-content hi">ऊर्जा को कार्य करने की क्षमता के रूप में परिभाषित किया गया है। जिस वस्तु में ऊर्जा होती है, वह कार्य करने के लिए दूसरी वस्तु पर बल लगा सकती है। ऊर्जा का SI मात्रक भी जूल (J) है।</span>
+                <span class="lang-content bn">শক্তিকে কার্য করার ক্ষমতা হিসাবে সংজ্ঞায়িত করা হয়। যে বস্তুর শক্তি আছে, সে অন্য বস্তুর উপর বল প্রয়োগ করে কাজ করতে পারে। শক্তির SI এককও জুল (J)।</span>
+            </p>
+            <h3>
+                <span class="lang-content en">Forms of Energy</span>
+                <span class="lang-content hi">ऊर्जा के रूप</span>
+                <span class="lang-content bn">শক্তির বিভিন্ন রূপ</span>
+            </h3>
+            <ul class="styled-list">
+                <li>
+                    <span class="lang-content en"><strong>Kinetic Energy:</strong> The energy possessed by an object due to its motion. Formula: <strong>Eₖ = ½mv²</strong>.</span>
+                    <span class="lang-content hi"><strong>गतिज ऊर्जा:</strong> किसी वस्तु में उसकी गति के कारण निहित ऊर्जा। सूत्र: <strong>Eₖ = ½mv²</strong>।</span>
+                    <span class="lang-content bn"><strong>গতিশক্তি:</strong> কোনো বস্তুর গতির কারণে তার মধ্যে নিহিত শক্তি। সূত্র: <strong>Eₖ = ½mv²</strong>।</span>
+                </li>
+                 <li>
+                    <span class="lang-content en"><strong>Potential Energy:</strong> The energy stored in an object due to its position or configuration. For an object at height 'h', the formula is: <strong>Eₚ = mgh</strong>.</span>
+                    <span class="lang-content hi"><strong>स्थितिज ऊर्जा:</strong> किसी वस्तु में उसकी स्थिति या विन्यास के कारण संग्रहीत ऊर्जा। 'h' ऊंचाई पर किसी वस्तु के लिए, सूत्र है: <strong>Eₚ = mgh</strong>।</span>
+                    <span class="lang-content bn"><strong>স্থিতিশক্তি:</strong> কোনো বস্তুর অবস্থান বা কনফিগারেশনের কারণে তার মধ্যে সঞ্চিত শক্তি। 'h' উচ্চতায় কোনো বস্তুর জন্য সূত্রটি হলো: <strong>Eₚ = mgh</strong>।</span>
+                </li>
+            </ul>
+
+            <div class="key-concept-box">
+                <p>
+                    <span class="lang-content en"><strong>Law of Conservation of Energy:</strong> Energy can only be converted from one form to another; it can neither be created nor destroyed. The total energy before and after the transformation always remains constant.</span>
+                    <span class="lang-content hi"><strong>ऊर्जा संरक्षण का नियम:</strong> ऊर्जा को केवल एक रूप से दूसरे रूप में परिवर्तित किया जा सकता है; इसे न तो बनाया जा सकता है और न ही नष्ट किया जा सकता है। परिवर्तन से पहले और बाद में कुल ऊर्जा हमेशा स्थिर रहती है।</span>
+                    <span class="lang-content bn"><strong>শক্তির নিত্যতা সূত্র:</strong> শক্তিকে কেবল এক রূপ থেকে অন্য রূপে রূপান্তরিত করা যায়; এটি সৃষ্টি বা ধ্বংস করা যায় না। রূপান্তরের আগে এবং পরে মোট শক্তি সর্বদা ধ্রুবক থাকে।</span>
+                </p>
+            </div>
+
+            <h2>
+                <span class="lang-content en">Power</span>
+                <span class="lang-content hi">शक्ति</span>
+                <span class="lang-content bn">ক্ষমতা</span>
+            </h2>
+            <p>
+                <span class="lang-content en">Power is the rate of doing work or the rate of transfer of energy. If an agent does a work 'W' in time 't', then power is given by: <strong>Power = Work / time (P = W/t)</strong>. The SI unit of power is the watt (W).</span>
+                <span class="lang-content hi">शक्ति कार्य करने की दर या ऊर्जा के हस्तांतरण की दर है। यदि कोई एजेंट 't' समय में 'W' कार्य करता है, तो शक्ति इस प्रकार दी जाती है: <strong>शक्ति = कार्य / समय (P = W/t)</strong>। शक्ति का SI मात्रक वाट (W) है।</span>
+                <span class="lang-content bn">ক্ষমতা হলো কার্য করার হার বা শক্তি স্থানান্তরের হার। যদি কোনো এজেন্ট 't' সময়ে 'W' পরিমাণ কাজ করে, তবে ক্ষমতা হলো: <strong>ক্ষমতা = কার্য / সময় (P = W/t)</strong>। ক্ষমতার SI একক হলো ওয়াট (W)।</span>
+            </p>
+
+        </main>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const langContents = document.querySelectorAll('.lang-content');
+
+        function switchLanguage(lang) {
+            localStorage.setItem('userLanguage', lang);
+
+            langButtons.forEach(button => {
+                button.classList.remove('active');
+                if (button.id === `btn-${lang}`) {
+                    button.classList.add('active');
+                }
+            });
+
+            langContents.forEach(content => {
+                content.style.display = 'none';
+            });
+
+            const activeContents = document.querySelectorAll(`.${lang}`);
+            activeContents.forEach(content => {
+                content.style.display = 'inline';
+            });
+        }
+
+        langButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const lang = button.id.split('-')[1];
+                switchLanguage(lang);
+            });
+        });
+
+        const savedLang = localStorage.getItem('userLanguage');
+        if (savedLang) {
+            switchLanguage(savedLang);
+        } else {
+            switchLanguage('en');
+        }
+    });
+</script>
+
+</body>
+</html>

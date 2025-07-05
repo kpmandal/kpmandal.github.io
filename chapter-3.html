@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 3: Atoms and Molecules</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap');
+
+        :root {
+            --bg-color: #e3f2fd; /* Light sky blue */
+            --card-bg: #ffffff;
+            --text-color: #37474f;
+            --header-color: #0d47a1; /* Deep blue */
+            --accent-color: #ffc107; /* Amber yellow */
+            --accent-light: #fffbe6; /* Light yellow for boxes */
+            --card-shadow: rgba(0, 0, 0, 0.1);
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'Nunito', sans-serif;
+            color: var(--text-color);
+            margin: 0;
+            padding: 30px;
+            line-height: 1.7;
+        }
+
+        .note-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            border-radius: 24px;
+            padding: 30px 40px;
+            box-shadow: 0 8px 0 0 #bdbdbd, 0 8px 15px 0 var(--card-shadow);
+        }
+        
+        .nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .back-link {
+            display: inline-block;
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 800;
+            box-shadow: 0 4px 0 0 #d1d1d1;
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
+        }
+
+        .back-link:hover {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 0 #d1d1d1;
+        }
+
+        .language-selector {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            padding: 10px 20px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            border: none;
+            border-radius: 16px;
+            background-color: #e9e9e9;
+            color: #555;
+            cursor: pointer;
+            box-shadow: 0 4px 0 0 #c9c9c9;
+            transition: all 0.1s ease;
+        }
+
+        .lang-btn:hover { background-color: #dfdfdf; }
+
+        .lang-btn.active {
+            background-color: var(--accent-color);
+            color: #333;
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 0 #c79100;
+        }
+        
+        .chapter-header { text-align: center; border-bottom: 2px solid var(--border-color); padding-bottom: 30px; margin-bottom: 40px; }
+        .chapter-header h1 { font-size: 2.8rem; font-weight: 800; color: var(--header-color); margin: 0; }
+        .chapter-tag { display: inline-block; background-color: var(--accent-color); color: #333; font-weight: 800; padding: 6px 16px; border-radius: 16px; margin-top: 15px; font-size: 1rem; }
+        
+        main h2 { font-size: 2rem; font-weight: 800; color: var(--header-color); margin-top: 40px; margin-bottom: 20px; }
+        main h3 { font-size: 1.5rem; font-weight: 700; color: #1976d2; margin-top: 30px; margin-bottom: 15px; }
+        p, li { font-size: 1.1rem; color: var(--text-color); }
+        strong { font-weight: 700; color: #263238; }
+
+        .key-concept-box { background-color: var(--accent-light); border-left: 6px solid var(--accent-color); border-radius: 8px; padding: 20px; margin: 30px 0; }
+        .key-concept-box p { margin: 0; font-size: 1.1rem; font-weight: 700; }
+
+        .styled-list { list-style: none; padding-left: 0; }
+        .styled-list li { padding-left: 35px; position: relative; margin-bottom: 10px; }
+        .styled-list li::before { content: '⚛️'; position: absolute; left: 0; top: 4px; font-size: 1.2rem; }
+
+        .lang-content { display: none; }
+
+        @media (max-width: 768px) {
+            body { padding: 15px; }
+            .note-container { padding: 25px; }
+            .chapter-header h1 { font-size: 2.2rem; }
+            .nav-header { flex-direction: column-reverse; align-items: stretch; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="note-container">
+        <header class="nav-header">
+            <a href="index.html" class="back-link">
+                <span class="lang-content en">← Back to Index</span>
+                <span class="lang-content hi">← सूची पर वापस जाएं</span>
+                <span class="lang-content bn">← সূচিপত্রে ফিরে যান</span>
+            </a>
+            <div class="language-selector">
+                <button id="btn-en" class="lang-btn">English</button>
+                <button id="btn-hi" class="lang-btn">हिन्दी</button>
+                <button id="btn-bn" class="lang-btn">বাংলা</button>
+            </div>
+        </header>
+
+        <header class="chapter-header">
+            <h1>
+                <span class="lang-content en">Atoms and Molecules ⚛️</span>
+                <span class="lang-content hi">परमाणु एवं अणु ⚛️</span>
+                <span class="lang-content bn">পরমাণু এবং অণু ⚛️</span>
+            </h1>
+            <div class="chapter-tag">
+                <span class="lang-content en">Chapter 3</span>
+                <span class="lang-content hi">अध्याय 3</span>
+                <span class="lang-content bn">অধ্যায় ৩</span>
+            </div>
+        </header>
+
+        <main>
+            <h2>
+                <span class="lang-content en">Laws of Chemical Combination</span>
+                <span class="lang-content hi">रासायनिक संयोजन के नियम</span>
+                <span class="lang-content bn">রাসায়নিক সংযোগের সূত্র</span>
+            </h2>
+            <p>
+                <span class="lang-content en">Two major laws govern how elements combine to form compounds.</span>
+                <span class="lang-content hi">दो प्रमुख नियम यह नियंत्रित करते हैं कि तत्व यौगिक बनाने के लिए कैसे संयोजित होते हैं।</span>
+                <span class="lang-content bn">দুটি প্রধান সূত্র নির্ধারণ করে কিভাবে মৌলগুলি যৌগ গঠন করার জন্য মিলিত হয়।</span>
+            </p>
+            <ul class="styled-list">
+                <li>
+                    <span class="lang-content en"><strong>Law of Conservation of Mass:</strong> States that mass can neither be created nor destroyed in a chemical reaction.</span>
+                    <span class="lang-content hi"><strong>द्रव्यमान संरक्षण का नियम:</strong> यह बताता है कि किसी रासायनिक अभिक्रिया में द्रव्यमान न तो बनाया जा सकता है और न ही नष्ट किया जा सकता है।</span>
+                    <span class="lang-content bn"><strong>ভরের নিত্যতা সূত্র:</strong> এই সূত্র অনুযায়ী, রাসায়নিক বিক্রিয়ায় ভর সৃষ্টি বা ধ্বংস করা যায় না।</span>
+                </li>
+                <li>
+                    <span class="lang-content en"><strong>Law of Constant Proportions:</strong> States that in a chemical substance, the elements are always present in definite proportions by mass.</span>
+                    <span class="lang-content hi"><strong>निश्चित अनुपात का नियम:</strong> यह बताता है कि किसी रासायनिक पदार्थ में तत्व हमेशा द्रव्यमान के अनुसार निश्चित अनुपात में मौजूद रहते हैं।</span>
+                    <span class="lang-content bn"><strong>স্থিরানুপাত সূত্র:</strong> এই সূত্র অনুযায়ী, একটি রাসায়নিক পদার্থে মৌলগুলি সর্বদা ভর অনুসারে নির্দিষ্ট অনুপাতে উপস্থিত থাকে।</span>
+                </li>
+            </ul>
+
+            <div class="key-concept-box">
+                <p>
+                    <span class="lang-content en">Dalton's atomic theory provided an explanation for these laws, suggesting that matter is made of tiny, indivisible particles called atoms.</span>
+                    <span class="lang-content hi">डाल्टन के परमाणु सिद्धांत ने इन नियमों की व्याख्या की, यह सुझाव देते हुए कि पदार्थ परमाणुओं नामक छोटे, अविभाज्य कणों से बना है।</span>
+                    <span class="lang-content bn">ডাল্টনের পারমাণবিক তত্ত্ব এই সূত্রগুলির ব্যাখ্যা প্রদান করে, যেখানে বলা হয়েছে যে পদার্থ পরমাণু নামক ক্ষুদ্র, অবিভাজ্য কণা দ্বারা গঠিত।</span>
+                </p>
+            </div>
+
+            <h2>
+                <span class="lang-content en">What is an Atom?</span>
+                <span class="lang-content hi">परमाणु क्या है?</span>
+                <span class="lang-content bn">পরমাণু কী?</span>
+            </h2>
+            <p>
+                <span class="lang-content en">An atom is the smallest particle of an element that can take part in a chemical reaction. Atoms are very small; they are measured in nanometres (1 nm = 10⁻⁹ m).</span>
+                <span class="lang-content hi">परमाणु किसी तत्व का सबसे छोटा कण है जो रासायनिक अभिक्रिया में भाग ले सकता है। परमाणु बहुत छोटे होते हैं; उन्हें नैनोमीटर में मापा जाता है (1 एनएम = 10⁻⁹ मीटर)।</span>
+                <span class="lang-content bn">পরমাণু হলো কোনো মৌলের ক্ষুদ্রতম কণা যা রাসায়নিক বিক্রিয়ায় অংশ নিতে পারে। পরমাণু খুব ছোট; এগুলি ন্যানোমিটারে (১ ন্যানোমিটার = ১০⁻⁹ মিটার) পরিমাপ করা হয়।</span>
+            </p>
+            
+            <h2>
+                <span class="lang-content en">What is a Molecule?</span>
+                <span class="lang-content hi">अणु क्या है?</span>
+                <span class="lang-content bn">অণু কী?</span>
+            </h2>
+            <p>
+                <span class="lang-content en">A molecule is a group of two or more atoms that are chemically bonded together. It is the smallest particle of a substance that is capable of independent existence and shows all the properties of that substance.</span>
+                <span class="lang-content hi">एक अणु दो या दो से अधिक परमाणुओं का एक समूह है जो रासायनिक रूप से एक साथ बंधे होते हैं। यह किसी पदार्थ का सबसे छोटा कण है जो स्वतंत्र रूप से अस्तित्व में रह सकता है और उस पदार्थ के सभी गुण दिखाता है।</span>
+                <span class="lang-content bn">অণু হলো দুই বা ততোধিক পরমাণুর একটি সমষ্টি যা রাসায়নিকভাবে একসঙ্গে আবদ্ধ থাকে। এটি কোনো পদার্থের ক্ষুদ্রতম কণা যা স্বাধীনভাবে থাকতে পারে এবং সেই পদার্থের সমস্ত বৈশিষ্ট্য প্রদর্শন করে।</span>
+            </p>
+            <ul class="styled-list">
+                 <li>
+                    <span class="lang-content en"><strong>Molecules of elements:</strong> Consist of the same type of atoms (e.g., O₂, N₂).</span>
+                    <span class="lang-content hi"><strong>तत्वों के अणु:</strong> एक ही प्रकार के परमाणुओं से मिलकर बने होते हैं (जैसे, O₂, N₂)।</span>
+                    <span class="lang-content bn"><strong>মৌলের অণু:</strong> একই প্রকারের পরমাণু নিয়ে গঠিত (যেমন, O₂, N₂)।</span>
+                </li>
+                <li>
+                    <span class="lang-content en"><strong>Molecules of compounds:</strong> Consist of different types of atoms joined in a fixed ratio (e.g., H₂O, CO₂).</span>
+                    <span class="lang-content hi"><strong>यौगिकों के अणु:</strong> एक निश्चित अनुपात में जुड़े विभिन्न प्रकार के परमाणुओं से मिलकर बने होते हैं (जैसे, H₂O, CO₂)।</span>
+                    <span class="lang-content bn"><strong>যৌগের অণু:</strong> একটি নির্দিষ্ট অনুপাতে সংযুক্ত বিভিন্ন প্রকারের পরমাণু নিয়ে গঠিত (যেমন, H₂O, CO₂)।</span>
+                </li>
+            </ul>
+
+        </main>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const langContents = document.querySelectorAll('.lang-content');
+
+        function switchLanguage(lang) {
+            localStorage.setItem('userLanguage', lang);
+
+            langButtons.forEach(button => {
+                button.classList.remove('active');
+                if (button.id === `btn-${lang}`) {
+                    button.classList.add('active');
+                }
+            });
+
+            langContents.forEach(content => {
+                content.style.display = 'none';
+            });
+
+            const activeContents = document.querySelectorAll(`.${lang}`);
+            activeContents.forEach(content => {
+                content.style.display = 'inline';
+            });
+        }
+
+        langButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const lang = button.id.split('-')[1];
+                switchLanguage(lang);
+            });
+        });
+
+        // On page load, check for a saved language preference
+        const savedLang = localStorage.getItem('userLanguage');
+        if (savedLang) {
+            switchLanguage(savedLang);
+        } else {
+            // Default to English
+            switchLanguage('en');
+        }
+    });
+</script>
+
+</body>
+</html>
